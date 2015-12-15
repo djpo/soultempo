@@ -1,0 +1,12 @@
+project 2 workflow
+____________________
+database
+
+create user database
+	user_id (primary key)
+	username
+	password
+	email
+	liked_songs
+		by EN song id
+	soul_tempo
