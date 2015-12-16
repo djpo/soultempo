@@ -1,0 +1,11 @@
+* {
+	border: 1px dotted gray;
+}
+
+#topbar {
+	height: 50px;
+	width: 100%;
+	background-color: blue;
+	font-size: 15px;
+	color: white;
+}

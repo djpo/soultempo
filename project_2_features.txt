@@ -1,4 +1,4 @@
-project 2 features
+project 2 outline
 ____________________
 essential features
 

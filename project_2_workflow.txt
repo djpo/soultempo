@@ -1,9 +1,15 @@
 project 2 workflow
 ____________________
-workflow
+in progress
+
+get API key from .env, rather than in .ejs
+____________________
+general workflow
 
 route structure
 	add pages?
+
+authorization
 
 create db
 
@@ -34,3 +40,11 @@ define association between tables in a model
 sequelize model:create --name users --attributes username:string,password:string,soul_tempo:integer
 
 sequelize model:create --name favorites --attributes...
+
+____________________
+extra
+
+if no title entered
+	search by artist only
+if no artist entered
+	search by title only
