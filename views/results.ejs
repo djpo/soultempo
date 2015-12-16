@@ -1,0 +1,25 @@
+<% var idArray = []; %>
+
+<h2>Results!</h2>
+
+<% foundSongs.forEach(function(song) { %>
+
+	<div class="row songRow">
+		<div class="col-xs-3 songField">
+			<%= song.artist %>
+		</div>
+		<div class="col-xs-3 songField">
+			<%= song.title %>
+		</div>
+		<div class="col-xs-3 songField">
+			<%= song.id %>
+		</div>
+	</div>
+
+	<% idArray.push(song.id) %>
+
+<% }); %>
+
+
+<% console.log("idArray: ");
+console.log(idArray); %>

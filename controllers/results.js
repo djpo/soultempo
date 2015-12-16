@@ -16,18 +16,16 @@ router.get('/', function(req, res) {
 	var artist1 = req.query.artist_1;
 	var title1 = req.query.title_1;
 
-/////////////// ASYNC GOODNESS
+//////////////////// API REQUEST
 	var links = [
-		'http://developer.echonest.com/api/v4/song/search?api_key=' + 'CR1MTO8OI8JMEZIYJ' + '&artist=' + artist0 + '&title=' + title0,
-		'http://developer.echonest.com/api/v4/song/search?api_key=' + 'CR1MTO8OI8JMEZIYJ' + '&artist=' + artist1 + '&title=' + title1
+		'http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + artist0 + '&title=' + title0,
+		'http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + artist1 + '&title=' + title1
 	];
 
 	var getData = function(url, cb){
 		request(url, function(err, response, body) {
 			var fullResponseBody = JSON.parse(body);
-			// console.log('____________________');
-			// console.log("EN full response body for song_id: '" + url + "':");
-			// console.log(fullResponseBody);
+			
 			// if response contains ≥ 1 song, add to 
 			if (!err && response.statusCode === 200 && fullResponseBody.response.songs.length > 0) {
 				var returnedSong = fullResponseBody.response.songs[0];
@@ -51,10 +49,10 @@ router.get('/', function(req, res) {
 		console.log(resultingArray);
 		console.log('_______(end)________');
 
-		// send to summary view
-		res.render('summary', {foundSongs: resultingArray});
+		// send to results view
+		res.render('results', {foundSongs: resultingArray});
 	});
-////////////// ASYNC GOODNESS OVER
+//////////////////// API REQUEST OVER
 
 });
 

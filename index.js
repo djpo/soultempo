@@ -17,7 +17,7 @@ app.get('/add', function(req, res) {
 	res.render('add');
 });
 
-app.use('/summary', require('./controllers/summary.js'));
+app.use('/results', require('./controllers/results'));
 
 
 app.listen(3000, function() {
