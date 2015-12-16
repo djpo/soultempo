@@ -1,12 +1,36 @@
 project 2 workflow
 ____________________
+workflow
+
+route structure
+	add pages?
+
+create db
+
+style
+____________________
 database
 
-create user database
+create user table
 	user_id (primary key)
-	username
+	username (email?)
 	password
-	email
-	liked_songs
-		by EN song id
 	soul_tempo
+	songs (array)
+
+favorites table
+(+ auto id column)
+(f_id)	usr	song_id		tempo (float)
+1		1	6789		52.885
+2		1	589059		89.6741
+3		1	123			105.002			
+4		4	6789		142.4
+5		2	123			80
+
+define association between tables in a model
+	check in notes
+	one-to-many
+
+sequelize model:create --name users --attributes username:string,password:string,soul_tempo:integer
+
+sequelize model:create --name favorites --attributes...

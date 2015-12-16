@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Soul Tempo</title>
-	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<h3>Welcome to Soul Tempo!</h3>
 
-<div>
-	Welcome to Soul Tempo!
+<form action="/show" method="GET" role="form">
+  <legend>Find a song!</legend>
 
-	This page is (deep) in development.
-</div>
+  <div class="form-group">
+    <label for="">Artist</label>
+    <input type="text" class="form-control" id="artist" placeholder="ex. Charlie" name="artist">
+  </div>
+  <div class="form-group">
+    <label for="">Title</label>
+    <input type="text" class="form-control" id="title" placeholder="ex. Spacer Woman" name="title">
+  </div>
 
-<script></script>
-
-</body>
-</html>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

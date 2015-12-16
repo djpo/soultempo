@@ -6,7 +6,7 @@ user can sign up
 user can log in
 user can input songs (by title/artist search) into liked_songs
 app calculates ST
-x: 
+x: provides music to listen to yay
 ____________________
 x: additional features
 
@@ -30,7 +30,6 @@ add songs
 save changes
 x: delete songs
 x: drag between likes, favorites, recent
-x: 
 __________
 show soul tempo
 
@@ -43,4 +42,3 @@ x: provide suggestions for more listening
 	list of popular songs from EN with same tempo?
 		add genre terms to filter
 	SoundCloud?
-
