@@ -1,11 +1,27 @@
+/*
+green
+	rgba(102, 255, 178, 1)
+light blue
+	#66daff
+	rgba(102, 218, 255, 1)
+purple
+	#bb99ff
+	rgba(187, 153, 255, 1)
+*/
+
+
 * {
-	border: 1px dotted gray;
+	border: 2px solid gray;
+	background-color: rgba(187, 153, 255, .5);
+	font-family: helvetica;
+	color: white;
 }
 
 #topbar {
 	height: 50px;
 	width: 100%;
-	background-color: blue;
-	font-size: 15px;
+	background-color: #66daff;
+	font-size: 30px;
+	text-align: center;
 	color: white;
 }

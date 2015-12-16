@@ -3,11 +3,17 @@ ____________________
 in progress
 
 get API key from .env, rather than in .ejs
+	'process.enc.API_KEY 'or something
+
+make second API request for each song id
+	return artist, title, tempo
+	render summary page w/ this info
+
 ____________________
 general workflow
 
 route structure
-	add pages?
+	add pages
 
 authorization
 
@@ -18,14 +24,12 @@ ____________________
 database
 
 create user table
-	user_id (primary key)
-	username (email?)
-	password
-	soul_tempo
-	songs (array)
+(u_id)	username	password	soul_tempo
+1		coolguy5	?			85
+2		808-is-me	?			125
+3		Ferdinand	?			105
 
-favorites table
-(+ auto id column)
+create favorites table
 (f_id)	usr	song_id		tempo (float)
 1		1	6789		52.885
 2		1	589059		89.6741
@@ -33,10 +37,23 @@ favorites table
 4		4	6789		142.4
 5		2	123			80
 
+
+__________
 define association between tables in a model
 	check in notes
-	one-to-many
+	one-to-many? yes: exactly one u_id for each f_id
 
+**author.js**
+*Authors should have many posts*
+associate: function(models) {
+  models.author.hasMany(models.post);
+}
+**post.js**
+*A post should belong to an author*
+associate: function(models) {
+  models.post.belongsTo(models.author);
+}
+__________
 sequelize model:create --name users --attributes username:string,password:string,soul_tempo:integer
 
 sequelize model:create --name favorites --attributes...

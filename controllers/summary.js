@@ -1,40 +1,61 @@
 var express = require('express');
 var router = express.Router();
+var async = require('async');
 var request = require('request');
 
 
 router.get('/', function(req, res) {
+
+	console.log('____________________');
+	console.log('whole request:');
 	console.log(req.query);
-	console.log('-----');
+	console.log('_______(end)________');
 
-	var foundSongs = [];
+	var artist0 = req.query.artist_0;
+	var title0 = req.query.title_0;
+	var artist1 = req.query.artist_1;
+	var title1 = req.query.title_1;
 
-	for (var i = 0; i < 3; i++) {
-	// or need to do some .spread thing
+/////////////// ASYNC GOODNESS
+	var links = [
+		'http://developer.echonest.com/api/v4/song/search?api_key=' + 'CR1MTO8OI8JMEZIYJ' + '&artist=' + artist0 + '&title=' + title0,
+		'http://developer.echonest.com/api/v4/song/search?api_key=' + 'CR1MTO8OI8JMEZIYJ' + '&artist=' + artist1 + '&title=' + title1
+	];
 
-		var artist = req.query.artist_0;
-		var title = req.query.title_0;
-		/* not working
-		var artist = req.query.artist_ + i;
-		var title = req.query.title_ + i;
-		*/
-
-		console.log("Searching for '" + title  + "' by " + artist + " . . .");
-
-		/*
-		//TODO replace 'CR1MTO8OI8JMEZIYJ' with 'process.enc.API_KEY 'or something
-		request('http://developer.echonest.com/api/v4/song/search?api_key=' + 'CR1MTO8OI8JMEZIYJ' + '&artist=' + artist + "&title=" + title, function(err, response, body) {
-			var data = JSON.parse(body);
-
-			if (!err && response.statusCode === 200 && data.response.songs.length > 1) {
-				var id = data.response.songs[0].id;
-				console.log('(song id: ' + id + ') added to list...');	
+	var getData = function(url, cb){
+		request(url, function(err, response, body) {
+			var fullResponseBody = JSON.parse(body);
+			// console.log('____________________');
+			// console.log("EN full response body for song_id: '" + url + "':");
+			// console.log(fullResponseBody);
+			// if response contains ≥ 1 song, add to 
+			if (!err && response.statusCode === 200 && fullResponseBody.response.songs.length > 0) {
+				var returnedSong = fullResponseBody.response.songs[0];
+				var returnedArtist = returnedSong.artist_name;
+				var returnedTitle = returnedSong.title;
+				var returnedId = returnedSong.id;
+				var foundSong = {
+					artist: returnedArtist,
+					title: returnedTitle,
+					id: returnedId
+				};
 			}
+			// return foundSong, for use in async.concat cb below
+			cb(null, foundSong);
 		});
-		*/
+	};
 
-	}
-	// res.render('summary', {justOneId: array});
+	async.concat(links, getData, function(err, resultingArray) {
+		console.log('____________________');
+		console.log('async.concat resultingArray:');
+		console.log(resultingArray);
+		console.log('_______(end)________');
+
+		// send to summary view
+		res.render('summary', {foundSongs: resultingArray});
+	});
+////////////// ASYNC GOODNESS OVER
+
 });
 
 
