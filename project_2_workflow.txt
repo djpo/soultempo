@@ -9,7 +9,11 @@ change /results GET routes to POST?
 ____________________
 general workflow
 
-create db
+make db work
+	validations?
+	associations?
+		models.user.hasMany(models.favorite);
+		models.favorite.belongsTo(models.user);
 
 authorization
 
@@ -18,46 +22,33 @@ summary page
 		return artist, title, tempo
 		render summary page w/ this info
 
+async.waterfall vs. async.concat?
+
 style
+
 ____________________
-database
+database (name: soultempo)
 
 create users table
-(u_id)	username	password	soul_tempo
+(id)	username	password	soul_tempo
 1		coolguy5	?			85
 2		808-is-me	?			125
 3		Ferdinand	?			105
 
 create favorites table
-(f_id)	u_id	song_id		tempo (float)
+(id)	u_id	song_id		tempo (float)
 1		1		6789		52.885
 2		1		589059		89.6741
 3		1		123			105.002			
 4		4		6789		142.4
 5		2		123			80
-
-
 __________
-define association between tables in a model
-	one-to-many
-		exactly one u_id for each f_id
-		many f_ids for each u_id
+sequelize model:create --name user --attributes username:string,password:string,soul_tempo:integer
 
-**author.js**
-*Authors should have many posts*
-associate: function(models) {
-  models.author.hasMany(models.post);
-}
-**post.js**
-*A post should belong to an author*
-associate: function(models) {
-  models.post.belongsTo(models.author);
-}
-__________
-sequelize model:create --name users --attributes username:string,password:string,soul_tempo:integer
+sequelize model:create --name favorite --attributes u_id:integer,song_id:string,tempo:float
 
-sequelize model:create --name favorites --attributes u_id:integer,song_id:string,tempo:float
-
+then
+sequelize db:migrate
 ____________________
 extra
 
@@ -66,6 +57,9 @@ allow song add with incomplete fields
 		search by artist only
 	if no artist entered
 		search by title only
+
+user can edit favorites
+	delete from list > delete row from favorites table
 
 user can edit song additions before submission
 	if found, fields turn into returned songs from EN

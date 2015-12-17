@@ -1,25 +1,37 @@
-<% var idArray = []; %>
 
-<h2>Results!</h2>
+<h2>Search results</h2>
+<h4>Confirm before processing.</h4>
 
 <% foundSongs.forEach(function(song) { %>
-
 	<div class="row songRow">
-		<div class="col-xs-3 songField">
+		<div class="col-xs-4 songField">
 			<%= song.artist %>
 		</div>
-		<div class="col-xs-3 songField">
+		<div class="col-xs-4 songField">
 			<%= song.title %>
 		</div>
-		<div class="col-xs-3 songField">
+		<div class="col-xs-4 songField">
 			<%= song.id %>
 		</div>
 	</div>
-
-	<% idArray.push(song.id) %>
-
 <% }); %>
 
 
-<% console.log("idArray: ");
-console.log(idArray); %>
+
+
+
+
+
+
+<!--
+<form action="/process" method="POST" role="form">
+<% foundSongs.forEach(function(song) { %>
+	<input style="display:none;" class="form-control" id="process" name="oneId" value=<%= song.id %>>
+<% }); %>
+	<button type="submit" class="btn btn-primary">Process</button>
+</form>
+-->
+<!--
+OR, instead of form:
+when click submit button, activates AJAX script
+-->
