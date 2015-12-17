@@ -1,0 +1,9 @@
+sessions
+
+
+
+http://blog.modulus.io/nodejs-and-express-sessions
+
+(in index.js)
+app.use(express.cookieParser());
+app.use(express.session({secret: '1234567890QWERTY'}));
