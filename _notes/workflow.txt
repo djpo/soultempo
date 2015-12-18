@@ -2,20 +2,6 @@ project 2 workflow
 ____________________
 general workflow
 
-process.js
-	make second API request for each song id in results.ejs
-		return artist, title, tempo
-			add to db
-		calculate soul tempo
-			from all (current user) favorites in db
-			add to db
-		render summary.ejs
-summary.ejs
-	show artist, title, tempo
-		from db selection for current user
-		here (not process.js), so that user can skip add.ejs
-
-user login
 
 style
 

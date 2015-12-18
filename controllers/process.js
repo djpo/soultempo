@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
  	});
  	console.log(links);
 
-var getData = function(url, cb){
+	var getData = function(url, cb){
 		request(url, function(err, response, body) {
 			var fullResponseBody = JSON.parse(body);
 			// if response contains ≥ 1 song, add to foundSongs
@@ -45,7 +45,6 @@ var getData = function(url, cb){
 	async.concat(links, getData, function(err, gatheredSongs) {
 		console.log('____________________');
 		console.log('EN API calls returned:');
-		console.log('____________________');
 		console.log(gatheredSongs);
 
 		gatheredSongs.forEach(function(song) {
@@ -58,20 +57,16 @@ var getData = function(url, cb){
 					tempo: song.tempo
 				}
 			}).spread(function() {
+				console.log('____________________');
 				console.log("added '" + song.title + "' to favorites table");
 			});
 		});
 
-
-		console.log('_______(end)________');
-
-		// res.render('summary', {gatheredSongs: gatheredSongs});
-		res.status(200).send('TestStuff');
+		console.log('_______(async end)________');
 	});
 //////////
-
-	
-
+	console.log('_______right before res.status(200)________');
+	res.status(200).send('TestStuff');
 });
 
 

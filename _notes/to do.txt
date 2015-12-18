@@ -2,20 +2,20 @@ project 2 to do
 ____________________
 in progress
 
-db favorites table
-	add columns for artist, title
-
-results.js
-	move db row creation to process.js
-
-summary.js
-	retrieve values from db
-		dependent on req.session.currentUser
 ____________________
 next up
 
-authorization
-	req.session.varName
+summary.js
+	calculate soul_tempo
+	replace user table soul_tempo w/ updated
+	pass through to summary.ejs
+
+summary.ejs
+	present soul tempo
+
+process.js
+	summary.ejs loads before new additions to db
+		async.waterfall instead?		
 
 ____________________
 questions

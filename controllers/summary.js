@@ -17,17 +17,15 @@ var calcSoulTempo = function(tempos) {
 
 router.get('/', function(req, res) {
 	console.log('_____summary.js GET route_____');
-	console.log(req.session.user);
 
-
-// 	db.favorite.findAll({
-// 		where: {
-// 			u_id: req.session.user
-// 		}
-// 		// order: 'updatedAt DESC'
-// 	}).then(function(favorites) {
-// 		res.render('summary', {collection: favorites});
-// 	});
+	db.favorite.findAll({
+		where: {
+			u_id: req.session.user
+		}
+		// order: 'updatedAt DESC'
+	}).then(function(favorites) {
+		res.render('summary', {collection: favorites});
+	});
 
 	// calculate soul tempo
 	// insert soul tempo into db?
@@ -35,7 +33,6 @@ router.get('/', function(req, res) {
 
 
 	// res.render('summary', {ids: req.session.myIds});
-	res.render('summary');
 });
 
 
