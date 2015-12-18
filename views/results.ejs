@@ -1,17 +1,16 @@
-
 <h2>Search results</h2>
 <h4>Confirm before processing.</h4>
 
-<% foundSongs.forEach(function(song) { %>
+<% foundSongs.forEach(function(foundSong) { %>
 	<div class="row songRow">
 		<div class="col-xs-4">
-			<%= song.artist %>
+			<%= foundSong.artist %>
 		</div>
 		<div class="col-xs-4">
-			<%= song.title %>
+			<%= foundSong.title %>
 		</div>
 		<div class="col-xs-4 songId">
-			<%= song.id %>
+			<%= foundSong.id %>
 		</div>
 	</div>
 <% }); %>
@@ -20,34 +19,47 @@
 <button type="button" class="btn btn-primary" id="processplz">Process</button>
 
 <script> var songs = <%- JSON.stringify(foundSongs) %>; </script>
-<script type="text/javascript">
+<script>
   $('#processplz').on('click', function() {
-
     var idArray = [];
-    console.log(idArray);
-
     songs.forEach(function(song){
       idArray.push(song.id);
     });
-    console.log(idArray);
-
-    var myData = {
-      mySongs: idArray
+    var dataToPass = {
+      idsToPass: idArray
     };
-    console.log(myData);
 
     $.ajax({
       url: '/process',
       type: 'POST',
-      // cache: false,
-      data: myData,
-      dataType: 'json'
-      // success: function(data) {
-      //   alert('Success!');
-      // },
-      // error: function(jqXHR, textStatus, err) {
-      //   alert('text status ' + textStatus +' , err ' + err);
-      // }
+      data: dataToPass,
+      success: function(data) {
+        console.log('Success!');
+        window.location = '/summary';
+      },
+      error: function(jqXHR, textStatus, err) {
+        console.log('text status ' + textStatus +' , err ' + err);
+      }
     });
   });
 </script>
+
+
+<button action="/add" method="GET" type="button" class="btn btn-primary" id="backToAdd">Back (doesn't work)</button>
+
+<script>
+  $('#backToAdd').on('click', function() {
+    $.ajax({
+      url: '/add',
+      type: 'GET'
+    });
+  });
+</script>
+
+<form action="/add" method="GET">
+  <button type="submit" class="btn btn-primary">Back</button>
+</form>
+
+<form action="/summary" method="GET">
+  <button type="submit" class="btn btn-primary">to summary.js</button>
+</form>

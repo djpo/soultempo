@@ -1,6 +1,13 @@
-<h2>Summary!</h2>
+<h2>Summary</h2>
 
-<p>oh hi</p>
+<% console.log('_____coming to you from summary.ejs_____'); %>
+<% console.log(ids); %>
 
-<% console.log('you made it to the summary page!'); %>
-<% console.log('...' + message); %>
+
+<% ids.forEach(function(id) { %>
+	<div class="row songRow">
+		<div class="col-xs-6">
+			<%= id %>
+		</div>
+	</div>
+<% }); %>

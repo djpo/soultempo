@@ -8,24 +8,19 @@ var currentUser = 22;
 	// another placeholder
 
 
-router.get('/', function(req, res) {
-	var links = [
-		'http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.query.artist_0 + '&title=' + req.query.title_0,
-		'http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.query.artist_1 + '&title=' + req.query.title_1,
-		'http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.query.artist_2 + '&title=' + req.query.title_2
-	];
-
-
-// attempt at creating links with loop
-	// for (var i = 0; i < 3; i++) {
-	// 	console.log('title_'.concat(i));
-	// 	artist_str = 
-	// 	title_str = 'title_'.concat(i);
-	// 	console.log(title_str);
-	// 	links.push('http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + artist + i + '&title=' + title + i);
-	// }
-
-
+router.post('/', function(req, res) {
+	var links = [];
+	if (!req.body.artist_0 && !req.body.title_0) {
+		console.log('1st search has no artist or title');
+	} else {
+		links.push('http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.body.artist_0 + '&title=' + req.body.title_0);
+	}
+	if (!req.body.artist_1 && !req.body.title_1) {
+		console.log('2nd search has no artist or title');
+	} else {
+		links.push('http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.body.artist_1 + '&title=' + req.body.title_1);
+	}
+	console.log(links);
 
 //////////////////// API REQUEST
 	var getData = function(url, cb){

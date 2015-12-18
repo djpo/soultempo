@@ -5,14 +5,15 @@ light blue
 	#66daff
 	rgba(102, 218, 255, 1)
 purple
-	#bb99ff
 	rgba(187, 153, 255, 1)
+
+	rgb(0, 230, 172)
 */
 
 
 * {
 	border: 2px solid gray;
-	background-color: rgba(187, 153, 255, .5);
+	background-color: rgba(0, 230, 172, .6);
 	font-family: helvetica;
 	color: white;
 }
@@ -20,7 +21,7 @@ purple
 #topbar {
 	height: 50px;
 	width: 100%;
-	background-color: #66daff;
+	background-color: rgba(102, 218, 255, 1);
 	font-size: 30px;
 	text-align: center;
 	color: white;

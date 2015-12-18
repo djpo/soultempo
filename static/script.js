@@ -1,1 +1,0 @@
-console.log("Hi, I'm static/script.js! Wat.");

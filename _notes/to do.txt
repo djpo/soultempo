@@ -2,43 +2,33 @@ project 2 to do
 ____________________
 in progress
 
-results.ejs
-	make it work!
-	clean up button listener
-
-summary.ejs
-	not rendering from process.js
-	but printing console.logs
-	do I need to redirect to new route instead?
-
-____________________
-next up
+db favorites table
+	add columns for artist, title
 
 results.js
 	move db row creation to process.js
 
-results.js
-	make links array iterative
-	use similar process as for AJAX call
-	req.query.artist_0 (etc) from for loop...
+summary.js
+	retrieve values from db
+____________________
+next up
+
+authorization
+	req.session.varName
 
 ____________________
 questions
 
-res.render vs. res.redirect...
-
 db
-	validations?
 	associations?
 		models.user.hasMany(models.favorite);
 		models.favorite.belongsTo(models.user);
 
 change /results GET routes to POST?
 
-async.waterfall vs. async.concat?
-
 ____________________
 results.js
+
 do not make 1st API request if both fields blank
 	don't add link to links array
 
@@ -51,6 +41,13 @@ allow song add with incomplete fields
 'simon & garfunkel' didn't return any songs
 	maybe because of special character '&'?
 	improve filtering
+
+results.js
+	make links array iterative
+		use similar process as for AJAX call
+		req.query.artist_0 (etc) from for loop...
+	try async.waterfall (instead of async.concat)
 ____________________
 results.ejs
 	mack back button to add page
+		store data in session

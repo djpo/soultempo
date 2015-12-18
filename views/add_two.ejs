@@ -1,17 +1,17 @@
 <h2>Add songs!</h2>
 
-<form action="/results" method="GET" role="form">
+<form action="/results" method="POST" role="form">
 	<div class="form-group">
 		<label for="">Artist</label>
-		<input type="text" class="form-control" id="artist0" placeholder="artist" name="artist_0">
+		<input type="text" class="form-control" id="artist0" placeholder="artist" name="artist_0" value="james brown">
 	</div>
 	<div class="form-group">
 		<label for="">Title</label>
-		<input type="text" class="form-control" id="title0" placeholder="title" name="title_0">
+		<input type="text" class="form-control" id="title0" placeholder="title" name="title_0" value="papa's got a brand new bag">
 	</div>
 
 	<ln>
-<!--
+
 	<div class="form-group">
 		<label for="">Artist</label>
 		<input type="text" class="form-control" id="artist1" placeholder="artist" name="artist_1" value="charlie">
@@ -20,6 +20,6 @@
 		<label for="">Title</label>
 		<input type="text" class="form-control" id="title1" placeholder="title" name="title_1" value="spacer woman">
 	</div>
--->
+
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
