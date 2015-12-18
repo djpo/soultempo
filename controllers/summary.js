@@ -19,14 +19,14 @@ router.get('/', function(req, res) {
 	console.log('_____coming to you from summary.js GET route_____');
 
 
-
 	console.log('summary.js sayssss::: hi');
-console.log(session.currentUser);
-console.log('summary.js sayssss::: now the route...');
+	console.log(req.session.currentUser);
+	console.log('summary.js sayssss::: now the route...');
+
 
 	db.favorite.findAll({
 		where: {
-			u_id: 40
+			u_id: req.session.currentUser
 		}
 		// order: 'updatedAt DESC'
 	}).then(function(favorites) {
