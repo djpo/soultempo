@@ -16,7 +16,7 @@
 <% }); %>
 
 
-<button type="button" class="btn btn-primary" id="processplz">Process</button>
+<button type="button" class="btn btn-primary" id="processplz">Add to collection</button>
 
 <script> var songs = <%- JSON.stringify(foundSongs) %>; </script>
 <script>
@@ -45,21 +45,10 @@
 </script>
 
 
-<button action="/add" method="GET" type="button" class="btn btn-primary" id="backToAdd">Back (doesn't work)</button>
-
-<script>
-  $('#backToAdd').on('click', function() {
-    $.ajax({
-      url: '/add',
-      type: 'GET'
-    });
-  });
-</script>
-
 <form action="/add" method="GET">
   <button type="submit" class="btn btn-primary">Back</button>
 </form>
 
 <form action="/summary" method="GET">
-  <button type="submit" class="btn btn-primary">to summary.js</button>
+  <button type="submit" class="btn btn-primary">just take me to the summary</button>
 </form>

@@ -3,27 +3,19 @@
 <% console.log('_____coming to you from summary.ejs_____'); %>
 
 <div class="row labelRow">
-	<div class="col-xs-4">
+	<div class="col-xs-2">
 		user id
 	</div>
-	<div class="col-xs-4">
+	<div class="col-xs-2">
 		song id
 	</div>
-	<div class="col-xs-4">
+	<div class="col-xs-3">
+		artist
+	</div>
+	<div class="col-xs-3">
+		title
+	</div>
+	<div class="col-xs-2">
 		tempo
 	</div>
 </div>
-
-<% collection.forEach(function(entry) { %>
-	<div class="row songRow">
-		<div class="col-xs-4">
-			<%= entry.dataValues.u_id %>
-		</div>
-		<div class="col-xs-4">
-			<%= entry.dataValues.song_id %>
-		</div>
-		<div class="col-xs-4">
-			<%= entry.dataValues.tempo %>
-		</div>
-	</div>
-<% }); %>

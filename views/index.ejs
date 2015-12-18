@@ -1,5 +1,15 @@
-<h3>Welcome to Soul Tempo!</h3>
 
+<% if(currentUser) { %>
+  Hello, <b><%= typeof currentUser.username === 'string' ? currentUser.username : 'Unknown' %></b>.
+  <a href="/auth/logout" class="btn btn-primary">Logout</a>
+<% }else{ %>
+  <a href="/auth/login" class="btn btn-primary">Login</a>
+  <a href="/auth/signup" class="btn btn-primary">Signup</a>
+<% } %>
+<br><br>
+<a href="/restricted" class="btn btn-danger">Go to restricted page</a>
+
+<h3>Welcome to Soul Tempo!</h3>
 <p>
   A description of my app, and how to use it...
 </p>
@@ -8,5 +18,9 @@
 </p>
 
 <form action="/add" method="GET" role="form">
-	<button type="submit" class="btn btn-primary">Add songs</button>
+	<button type="submit" class="btn btn-primary">Find songs</button>
+</form>
+
+<form action="/summary" method="GET">
+  <button type="submit" class="btn btn-primary">Just take me to the summary</button>
 </form>

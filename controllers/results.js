@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var async = require('async');
 var request = require('request');
-var db = require('./../models');
 
 
 router.post('/', function(req, res) {
@@ -42,49 +41,13 @@ router.post('/', function(req, res) {
 		});
 	};
 
+	console.log('____________________');
+	console.log('EN API search initiated...');
 	async.concat(links, getData, function(err, foundSongs) {
+		console.log('EN API search complete. Songs found:');
 		console.log('____________________');
-		console.log('returned songs from EN:');
 		console.log(foundSongs);
 		console.log('_______(end)________');
-
-
-		// not working...
-
-		// Unhandled rejection TypeError: Cannot read property 'end' of undefined
-		//     at /Users/djp/GA/project2/node_modules/sequelize/lib/dialects/postgres/connection-manager.js:163:15
-		//     at Promise._execute (/Users/djp/GA/project2/node_modules/bluebird/js/release/debuggability.js:159:9)
-		//     at Promise._resolveFromExecutor (/Users/djp/GA/project2/node_modules/bluebird/js/release/promise.js:460:18)
-		//     at new Promise (/Users/djp/GA/project2/node_modules/bluebird/js/release/promise.js:76:14)
-		//     at ConnectionManager.disconnect (/Users/djp/GA/project2/node_modules/sequelize/lib/dialects/postgres/connection-manager.js:162:10)
-		//     at ConnectionManager.$disconnect (/Users/djp/GA/project2/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:261:41)
-		//     at Object.pool.Pooling.Pool.destroy (/Users/djp/GA/project2/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:99:14)
-		//     at Object.me.destroy (/Users/djp/GA/project2/node_modules/sequelize/node_modules/generic-pool/lib/generic-pool.js:153:13)
-		//     at removeIdle (/Users/djp/GA/project2/node_modules/sequelize/node_modules/generic-pool/lib/generic-pool.js:182:10)
-		//     at Timer.listOnTimeout (timers.js:92:15)
-
-		// foundSongs.forEach(function(song) {
-		// 	db.favorite.findOrCreate({
-		// 		where: {
-		// 			song_id: song.id,
-		// 			u_id: currentUser,
-		// 			tempo: 888
-		// 		}
-		// 	}).spread(function() {
-		// 		console.log("added '" + song.title + "' to favorites table");
-		// 	});
-		// });
-
-		// working, but only one favorite added
-		// db.favorite.findOrCreate({
-		// 	where: {
-		// 		song_id: foundSongs[0].id,
-		// 		u_id: currentUser,
-		// 		tempo: 888
-		// 	}
-		// }).spread(function() {
-		// 	res.render('results', {foundSongs: foundSongs});
-		// });
 
 		res.render('results', {foundSongs: foundSongs});
 	});

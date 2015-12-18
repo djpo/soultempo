@@ -13,18 +13,28 @@ purple
 
 * {
 	border: 1px solid gray;
-	background-color: rgba(0, 230, 172, .6);
 	font-family: helvetica;
 	color: white;
+}
+body {
+	background-color: rgba(0, 230, 172, .6);
 }
 
 #topbar {
 	height: 50px;
 	width: 100%;
 	background-color: rgba(102, 218, 255, 1);
+}
+#topbar > #appTitle {
 	font-size: 30px;
 	text-align: center;
 	color: white;
+}
+#topbar > #user {
+	max-width: 150px;
+	float: right;
+	background-color: rgba(187, 153, 255, .5);
+	color: yellow;
 }
 
 .labelRow {
