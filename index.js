@@ -61,8 +61,4 @@ app.use('/summary', require('./controllers/summary'));
 
 
 ///// listen for connections
-
-var port = process.env.PORT || 3000;
-app.listen(port, function() {
-	console.log("Smooth sailing...");
-});
+app.listen(process.env.PORT || 3000);

@@ -20,3 +20,6 @@ user can edit song additions before submission
 change color based on user's soul tempo
 	summary.ejs > soul tempo box
 	layout.ejs > user
+
+index.ejs
+	add background story
