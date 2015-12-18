@@ -7,23 +7,19 @@ next up
 
 process.js
 	summary.ejs loads before new additions to db
-		async.waterfall instead?		
+		async.waterfall instead?	
+
+
+prevent summary page
+	if not logged in
 
 ____________________
 questions
-
-db
-	associations?
-		models.user.hasMany(models.favorite);
-		models.favorite.belongsTo(models.user);
 
 change /results GET routes to POST?
 
 ____________________
 results.js
-
-do not make 1st API request if both fields blank
-	don't add link to links array
 
 allow song add with incomplete fields
 	if no title entered

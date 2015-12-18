@@ -17,7 +17,7 @@ router.get('/', function(req, res) {
 	db.favorite.findAll({
 		where: {
 			u_id: req.session.user
-		}
+		},
 		// order: 'updatedAt DESC'
 	}).then(function(favorites) {
 		var st = calcSoulTempo(favorites);

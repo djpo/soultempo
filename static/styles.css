@@ -12,12 +12,14 @@ purple
 
 
 * {
-	border: 1px solid gray;
+	border: 1px solid black;
+	border
 	font-family: helvetica;
 	color: white;
+	box-shadow: 0px 0px 15px 3px rgba(200, 200, 200, .2);
 }
 body {
-	background-color: rgba(0, 230, 172, .6);
+	background-color: rgb(128, 128, 128);
 }
 
 #topbar {

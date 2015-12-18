@@ -45,7 +45,6 @@ router.post('/', function(req, res) {
 	async.concat(links, getData, function(err, gatheredSongs) {
 		console.log('____________________');
 		console.log('EN API calls returned:');
-		console.log(gatheredSongs);
 
 		gatheredSongs.forEach(function(song) {
 			db.favorite.findOrCreate({
@@ -61,14 +60,12 @@ router.post('/', function(req, res) {
 				console.log("added '" + song.title + "' to favorites table");
 			});
 		});
-
 		console.log('_______(async end)________');
 	});
 //////////
 	console.log('_______right before res.status(200)________');
 	res.status(200).send('TestStuff');
 });
-
 
 
 module.exports = router;

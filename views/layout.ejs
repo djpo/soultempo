@@ -14,15 +14,7 @@
 	<div class="col-xs-10" id="appTitle">
 		~~~ Soul Tempo! ~~~
 	</div>
-	<div class="col-xs-2" id="user">
-		<% if (currentUser) { %>
-			user:<br><%= currentUser.username %>
-		<% } else { %>
-			not logged in
-		<% } %>
-	</div>
 </header>
-
 
 <div class="container">
 	<div class="row">
@@ -31,14 +23,25 @@
 </div>
 
 
-<div class="container">
-	<%- body %>
+
+<div class="container row">
+
+	<div class="col-xs-2" id="sidebar user">
+
+			<% if(currentUser) { %>
+				user: <%= currentUser.username %>
+				<a href="/auth/logout" class="btn btn-primary">Logout</a>
+			<% }else{ %>
+				not logged in
+				<a href="/auth/login" class="btn btn-primary">Login</a>
+				<a href="/auth/signup" class="btn btn-primary">Signup</a>
+			<% } %>
+	</div>
+
+	<div class="col-xs-10">
+		<%- body %>
+	</div>
 </div>
 
 </body>
 </html>
-
-    
-    
-        
-        
