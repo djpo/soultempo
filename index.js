@@ -20,7 +20,7 @@ app.use(session({
 app.use(flash());
 
 
-app.use(function (req,res,next) {
+app.use(function (req, res, next) {
 	if (req.session.user){
 		db.user.findById(req.session.user).then(function(user){
 			req.currentUser = user;
@@ -31,8 +31,7 @@ app.use(function (req,res,next) {
 		next();
 	}
 });
-
-app.use(function (req,res,next) {
+app.use(function (req, res, next) {
 	res.locals.currentUser = req.currentUser;
 	res.locals.alerts = req.flash();
 	next();
@@ -43,13 +42,7 @@ app.use(function (req,res,next) {
 app.get('/', function(req, res) {
 	res.render('index');
 });
-app.use('/results', require('./controllers/results'));
-app.use('/process', require('./controllers/process'));
-app.use('/summary', require('./controllers/summary'));
-
-
-// new routes
-app.get('/add',function(req,res){
+app.get('/add',function(req, res) {
   if(req.currentUser){
     res.render('add');
   }else{
@@ -58,9 +51,18 @@ app.get('/add',function(req,res){
   }
 });
 app.use('/auth', require('./controllers/auth.js'));
+app.use('/results', require('./controllers/results'));
+app.use('/process', require('./controllers/process'));
+app.use('/summary', require('./controllers/summary'));
+
+
+// new routes
+
 
 
 ///// listen for connections
-app.listen(3000, function() {
+
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
 	console.log("Smooth sailing...");
 });

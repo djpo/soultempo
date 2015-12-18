@@ -1,11 +1,5 @@
 project 2 workflow
 ____________________
-general workflow
-
-
-style
-
-____________________
 ____________________
 extra
 
@@ -22,3 +16,7 @@ user can edit favorites
 user can edit song additions before submission
 	if found, fields turn into returned songs from EN
 	if not found, fields turn red
+
+change color based on user's soul tempo
+	summary.ejs > soul tempo box
+	layout.ejs > user

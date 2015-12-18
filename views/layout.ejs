@@ -11,36 +11,68 @@
 <body>
 
 <header class="row" id="topbar">
-	<div class="col-xs-10" id="appTitle">
-		~~~ Soul Tempo! ~~~
+	<div class="col-xs-12" id="appTitle">
+		~~~ SOUL TEMPO ~~~
 	</div>
 </header>
 
 <div class="container">
-	<div class="row">
+	<div>
 		<% include ./partials/alerts.ejs %>
 	</div>
 </div>
 
-
-
 <div class="container row">
 
-	<div class="col-xs-2" id="sidebar user">
+	<div class="col-xs-2 border" id="sidebar">
 
-			<% if(currentUser) { %>
-				user: <%= currentUser.username %>
+		<div class="row border" id="user">
+			<div class="left-label">
+				USER
+			</div>
+
+			<div id="current-user">
+			</div>
+
+			<% if (currentUser) { %>
+				<div id="current-user">
+					user: <span id="username"><%= currentUser.username %></span>
+				</div>
+				
 				<a href="/auth/logout" class="btn btn-primary">Logout</a>
-			<% }else{ %>
-				not logged in
+			<% } else { %>
+				<div id="current-user">
+					not logged in
+				</div>
 				<a href="/auth/login" class="btn btn-primary">Login</a>
 				<a href="/auth/signup" class="btn btn-primary">Signup</a>
 			<% } %>
+		</div>
+
+		<div class="row border" id="nav">
+			<div class="left-label">
+				NAVIGATION
+			</div>
+
+			<form action="/" method="GET">
+				<button type="submit" class="btn btn-primary">Home</button>
+			</form>
+
+			<form action="/add" method="GET" role="form">
+				<button type="submit" class="btn btn-primary">Add songs</button>
+			</form>
+
+			<form action="/summary" method="GET">
+				<button type="submit" class="btn btn-primary">My collection</button>
+			</form>
+		</div>
+
 	</div>
 
-	<div class="col-xs-10">
+	<div class="col-xs-10 border">
 		<%- body %>
 	</div>
+
 </div>
 
 </body>

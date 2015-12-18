@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
 	}
 
 //////////////////// API REQUEST
-	var getData = function(url, cb){
+	var getData = function(url, cb) {
 		request(url, function(err, response, body) {
 			var fullResponseBody = JSON.parse(body);
 			// if response contains ≥ 1 song, add to foundSongs

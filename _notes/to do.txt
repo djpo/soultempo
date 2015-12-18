@@ -2,17 +2,19 @@ project 2 to do
 ____________________
 in progress
 
+if soul tempo is NaN
+	write "soul lacking"
 ____________________
 next up
+
+add nav section
+	prevent pages if not logged in (redirect)
+
+merge login/signup pages (and buttons)
 
 process.js
 	summary.ejs loads before new additions to db
 		async.waterfall instead?	
-
-
-prevent summary page
-	if not logged in
-
 ____________________
 questions
 

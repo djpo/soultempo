@@ -11,6 +11,15 @@ var calcSoulTempo = function (songs) {
 	return Math.round(tempoNumerator / songs.length);
 };
 
+router.all('/', function (req, res, next) {
+	if(req.currentUser){
+		next();
+	}else{
+		req.flash('danger','You must log in before viewing your collection.');
+		res.redirect('/');
+	}
+});
+
 router.get('/', function(req, res) {
 	console.log('_____summary.js GET route_____');
 
@@ -36,7 +45,6 @@ router.get('/', function(req, res) {
 		res.render('summary', {collection: favorites, st: st});
 	});
 });
-
 
 
 module.exports = router;

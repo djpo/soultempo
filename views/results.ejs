@@ -1,4 +1,4 @@
-<h2>Search results</h2>
+<h3>Search results</h3>
 <h4>Confirm before processing.</h4>
 
 <% foundSongs.forEach(function(foundSong) { %>
@@ -15,8 +15,14 @@
 	</div>
 <% }); %>
 
+<div class="row">
+  <button type="button" class="btn btn-primary" id="processplz">Save to collection</button>
 
-<button type="button" class="btn btn-primary" id="processplz">Add to collection</button>
+  <form action="/add" method="GET">
+    <button type="submit" class="btn btn-primary">Back to search</button>
+  </form>
+</div>
+
 
 <script> var songs = <%- JSON.stringify(foundSongs) %>; </script>
 <script>
@@ -43,12 +49,3 @@
     });
   });
 </script>
-
-
-<form action="/add" method="GET">
-  <button type="submit" class="btn btn-primary">Back</button>
-</form>
-
-<form action="/summary" method="GET">
-  <button type="submit" class="btn btn-primary">just take me to the summary</button>
-</form>
