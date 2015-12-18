@@ -3,17 +3,13 @@ var router = express.Router();
 var db = require('./../models');
 var session = require('express-session');
 
-var calcSoulTempo = function(tempos) {
+var calcSoulTempo = function (songs) {
 	var tempoNumerator = 0;
-	tempos.forEach(function(tempo) {
-		tempoNumerator += tempo;
+	songs.forEach(function (song) {
+		tempoNumerator += song.dataValues.tempo;
 	});
-	return tempoNumerator / tempos.length;
+	return Math.round(tempoNumerator / songs.length);
 };
-
-
-
-
 
 router.get('/', function(req, res) {
 	console.log('_____summary.js GET route_____');
@@ -24,15 +20,21 @@ router.get('/', function(req, res) {
 		}
 		// order: 'updatedAt DESC'
 	}).then(function(favorites) {
-		res.render('summary', {collection: favorites});
+		var st = calcSoulTempo(favorites);
+		console.log(st);
+
+		db.user.update({
+			soul_tempo: st
+		}, {
+			where: {
+				id: req.session.user
+			}
+		}).then(function() {
+			console.log('hmmmmmmmmmmm');
+		});
+
+		res.render('summary', {collection: favorites, st: st});
 	});
-
-	// calculate soul tempo
-	// insert soul tempo into db?
-	// send to summary below
-
-
-	// res.render('summary', {ids: req.session.myIds});
 });
 
 

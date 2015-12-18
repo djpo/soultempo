@@ -40,3 +40,20 @@ body {
 .labelRow {
 	background-color: black;
 }
+
+.center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#soulTempoBox {
+	height: 100px;
+	width: 100px;
+	text-align: center;
+	border: 5px solid pink;
+	padding: auto;
+	font-size: 50px;
+	font-weight: bold;
+	color: orange;
+}

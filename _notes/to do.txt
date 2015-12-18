@@ -5,14 +5,6 @@ in progress
 ____________________
 next up
 
-summary.js
-	calculate soul_tempo
-	replace user table soul_tempo w/ updated
-	pass through to summary.ejs
-
-summary.ejs
-	present soul tempo
-
 process.js
 	summary.ejs loads before new additions to db
 		async.waterfall instead?		

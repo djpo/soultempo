@@ -2,14 +2,21 @@
 
 <% console.log('_____coming to you from summary.ejs_____'); %>
 
+<div class="row center">
+	<div id="soulTempoBox">
+		<%= st %>
+	</div>
+</div>
+
+
 <div class="row labelRow">
 	<div class="col-xs-5">
 		artist
 	</div>
-	<div class="col-xs-5">
+	<div class="col-xs-6">
 		title
 	</div>
-	<div class="col-xs-2">
+	<div class="col-xs-1">
 		tempo
 	</div>
 </div>
@@ -19,11 +26,12 @@
 		<div class="col-xs-5">
 			<%= entry.dataValues.artist %>
 		</div>
-		<div class="col-xs-5">
+		<div class="col-xs-6">
 			<%= entry.dataValues.title %>
 		</div>	
-		<div class="col-xs-2">
-			<%= entry.dataValues.tempo %>
+		<div class="col-xs-1">
+			<%= Math.round(entry.dataValues.tempo); %>
 		</div>
 	</div>
 <% }); %>
+
