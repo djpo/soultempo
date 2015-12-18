@@ -4,9 +4,6 @@ var async = require('async');
 var request = require('request');
 var db = require('./../models');
 
-var currentUser = 22;
-	// another placeholder
-
 
 router.post('/', function(req, res) {
 	var links = [];
@@ -20,7 +17,6 @@ router.post('/', function(req, res) {
 	} else {
 		links.push('http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.body.artist_1 + '&title=' + req.body.title_1);
 	}
-	console.log(links);
 
 //////////////////// API REQUEST
 	var getData = function(url, cb){

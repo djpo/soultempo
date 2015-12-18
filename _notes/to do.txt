@@ -10,6 +10,7 @@ results.js
 
 summary.js
 	retrieve values from db
+		dependent on req.session.currentUser
 ____________________
 next up
 

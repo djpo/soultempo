@@ -1,13 +1,29 @@
 <h2>Summary</h2>
 
 <% console.log('_____coming to you from summary.ejs_____'); %>
-<% console.log(ids); %>
 
+<div class="row labelRow">
+	<div class="col-xs-4">
+		user id
+	</div>
+	<div class="col-xs-4">
+		song id
+	</div>
+	<div class="col-xs-4">
+		tempo
+	</div>
+</div>
 
-<% ids.forEach(function(id) { %>
+<% collection.forEach(function(entry) { %>
 	<div class="row songRow">
-		<div class="col-xs-6">
-			<%= id %>
+		<div class="col-xs-4">
+			<%= entry.dataValues.u_id %>
+		</div>
+		<div class="col-xs-4">
+			<%= entry.dataValues.song_id %>
+		</div>
+		<div class="col-xs-4">
+			<%= entry.dataValues.tempo %>
 		</div>
 	</div>
 <% }); %>
