@@ -2,36 +2,56 @@
 
 <% console.log('_____coming to you from summary.ejs_____'); %>
 
-<div class="row center">
-	<div id="soulTempoBox">
-		<%= st %>
-	</div>
-</div>
+<% console.log('-favorites[0]--'); %>
+<% console.log(st); %>
+<% console.log('---------------'); %>
 
 
-<div class="row labelRow">
-	<div class="col-xs-5">
-		artist
-	</div>
-	<div class="col-xs-6">
-		title
-	</div>
-	<div class="col-xs-1">
-		tempo
-	</div>
-</div>
 
-<% collection.forEach(function(entry) { %>
-	<div class="row songRow">
+<% if (!(st.typeof === "integer")) { %>
+	<% console.log("if statement 1st path"); %>
+
+	<div class="row center">
+		<div id="soulTempoBox">
+			soul deprived...
+		</div>
+	</div>
+
+<% } else { %>
+	<% console.log("if statement 2nd path"); %>
+
+	<div class="row center">
+		<div id="soulTempoBox">
+			<%= st %>
+		</div>
+	</div>
+
+
+	<div class="row labelRow">
 		<div class="col-xs-5">
-			<%= entry.dataValues.artist %>
+			artist
 		</div>
 		<div class="col-xs-6">
-			<%= entry.dataValues.title %>
-		</div>	
+			title
+		</div>
 		<div class="col-xs-1">
-			<%= Math.round(entry.dataValues.tempo); %>
+			tempo
 		</div>
 	</div>
-<% }); %>
+
+	<% collection.forEach(function(entry) { %>
+		<div class="row songRow">
+			<div class="col-xs-5">
+				<%= entry.dataValues.artist %>
+			</div>
+			<div class="col-xs-6">
+				<%= entry.dataValues.title %>
+			</div>	
+			<div class="col-xs-1">
+				<%= Math.round(entry.dataValues.tempo); %>
+			</div>
+		</div>
+	<% }); %>
+
+<% } %>
 

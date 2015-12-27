@@ -17,7 +17,7 @@ router.post('/', function(req, res) {
 		links.push('http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.body.artist_1 + '&title=' + req.body.title_1);
 	}
 	if (!req.body.artist_2 && !req.body.title_2) {
-		console.log('2nd search field has no artist nor title');
+		console.log('3rd search field has no artist nor title');
 	} else {
 		links.push('http://developer.echonest.com/api/v4/song/search?api_key=' + process.env.EN_API_KEY + '&artist=' + req.body.artist_2 + '&title=' + req.body.title_2);
 	}
