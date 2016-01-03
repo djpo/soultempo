@@ -2,78 +2,39 @@
 <html>
 <head>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link rel="stylesheet" href="styles.css">
+	
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+
 	<title>Soul Tempo</title>
 </head>
 <body>
 
-<header class="row" id="topbar">
-	<div class="col-xs-12" id="appTitle">
-		SOUL TEMPO
+	<header class="row" id="topbar">
+		<div class="col-xs-12" id="appTitle">
+			SOUL TEMPO
+		</div>
+	</header>
+
+	<div class="container">
+		<div>
+			<% include ./partials/alerts.ejs %>
+		</div>
 	</div>
-</header>
 
-<div class="container">
-	<div>
-		<% include ./partials/alerts.ejs %>
-	</div>
-</div>
+	<div class="container row">
 
-<div class="container row">
-
-	<div class="col-xs-2 border" id="sidebar">
-
-		<div class="row border" id="user">
-			<div class="left-label">
-				USER
-			</div>
-
-			<div id="current-user">
-			</div>
-
-			<% if (currentUser) { %>
-				<div id="current-user">
-					user: <span id="username"><%= currentUser.username %></span>
-				</div>
-				
-				<a href="/auth/logout" class="btn btn-primary">Logout</a>
-			<% } else { %>
-				<div id="current-user">
-					not logged in
-				</div>
-				<a href="/auth/login" class="btn btn-primary">Login</a>
-				<a href="/auth/signup" class="btn btn-primary">Signup</a>
-			<% } %>
+		<div class="col-xs-2 border" id="sidebar">
+			<% include ./partials/sidebar.ejs %>
 		</div>
 
-		<div class="row border" id="nav">
-			<div class="left-label">
-				NAVIGATION
-			</div>
-
-			<form action="/" method="GET">
-				<button type="submit" class="btn btn-primary">Home</button>
-			</form>
-
-			<form action="/add" method="GET" role="form">
-				<button type="submit" class="btn btn-primary">Add songs</button>
-			</form>
-
-			<form action="/summary" method="GET">
-				<button type="submit" class="btn btn-primary">My collection</button>
-			</form>
+		<div class="col-xs-10 border">
+			<%- body %>
 		</div>
 
 	</div>
-
-	<div class="col-xs-10 border">
-		<%- body %>
-	</div>
-
-</div>
 
 </body>
 </html>

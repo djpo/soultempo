@@ -1,0 +1,33 @@
+<div class="row border" id="user">
+	<div class="left-label">
+		USER
+	</div>
+
+	<div id="current-user">
+	</div>
+
+	<% if (currentUser) { %>
+		<div id="current-user">
+			user: <span id="username"><%= currentUser.username %></span>
+		</div>
+		
+		<a href="/auth/logout" class="btn btn-primary">Logout</a>
+	<% } else { %>
+		<div id="current-user">
+			not logged in
+		</div>
+		<a href="/auth" class="btn btn-primary">Login/Signup</a>
+	<% } %>
+</div>
+
+<div class="row border" id="nav">
+	<div class="left-label">
+		NAVIGATION
+	</div>
+
+	<div class="btn-group-vertical" role="group">
+		<a href="/" class="btn btn-primary">Home</a>
+		<a href="/add" class="btn btn-primary">Add songs</a>
+		<a href="/summary" class="btn btn-primary">My collection</a>
+	</div>
+</div>

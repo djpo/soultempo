@@ -43,10 +43,10 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 app.get('/add',function(req, res) {
-  if(req.currentUser){
+  if (req.currentUser) {
     res.render('add');
-  }else{
-    req.flash('danger','you must log in before adding songs to your collection');
+  } else {
+    req.flash('danger','You must log in before adding to your collection.');
     res.redirect('/');
   }
 });
@@ -54,7 +54,6 @@ app.use('/auth', require('./controllers/auth.js'));
 app.use('/results', require('./controllers/results'));
 app.use('/process', require('./controllers/process'));
 app.use('/summary', require('./controllers/summary'));
-
 
 
 ///// listen for connections

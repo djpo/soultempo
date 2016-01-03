@@ -2,23 +2,23 @@ project 2 to do
 ____________________
 in progress
 
+'my collection' showing "soul deprived" for all users
+
 ____________________
 next up
 
 upon signing up, make st in user table = -1
 	use throughout site to mean 'no ST yet'
+	started...
 
 if search returns 0 songs, stay on same page (w/ search entries intact), but don't go to confirmation
-
-update nav section
-	prevent pages if not logged in (redirect)
-		most done; check if all work
-	merge login/signup pages (and buttons)
-		make always on navbar, unless signed in (then logout button)
 
 process.js
 	summary.ejs loads before new additions to db
 		async.waterfall instead?
+
+make alerts appear translucent over rest of content
+	without moving content down
 
 ____________________
 questions

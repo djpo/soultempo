@@ -12,9 +12,9 @@ var calcSoulTempo = function (songs) {
 };
 
 router.all('/', function (req, res, next) {
-	if(req.currentUser){
+	if (req.currentUser) {
 		next();
-	}else{
+	} else {
 		req.flash('danger','You must log in before viewing your collection.');
 		res.redirect('/');
 	}

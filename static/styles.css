@@ -11,6 +11,7 @@
 }
 body {
 	background-color: rgb(128, 128, 128);
+	/* max-width: 500px; */
 }
 
 .btn {
@@ -38,6 +39,10 @@ body {
 	float: right;
 	background-color: rgba(187, 153, 255, .5);
 	color: yellow;
+}
+
+#sidebar {
+	width: 120px;
 }
 
 .labelRow {

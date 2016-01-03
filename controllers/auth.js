@@ -2,13 +2,14 @@ var db = require('../models');
 var express = require('express');
 var router = express.Router();
 
-//GET /auth/login
-//display login form
-router.get('/login',function(req,res){
-    res.render('auth/login');
+//GET /auth
+//display login/signup form
+router.get('/',function(req,res){
+    // replaced res.render('auth/login');
+    res.render('login_signup');
 });
 
-//POST /login
+//POST /auth/login
 //process login data and login user
 router.post('/login',function(req,res){
 
@@ -20,17 +21,11 @@ router.post('/login',function(req,res){
       req.flash('success','You are logged in.');
       res.redirect('/');
     }else{
-      req.flash('danger','invalid username or password');
-      res.redirect('/auth/login');
+      req.flash('danger','Invalid username or password.');
+      res.redirect('/auth');
     }
   });
 
-});
-
-//GET /auth/signup
-//display sign up form
-router.get('/signup',function(req,res){
-    res.render('auth/signup');
 });
 
 //POST /auth/signup
@@ -38,7 +33,7 @@ router.get('/signup',function(req,res){
 router.post('/signup',function(req,res){
   if(req.body.password != req.body.password2){
     req.flash('danger','Passwords must match.')
-    res.redirect('/auth/signup');
+    res.redirect('/auth');
   }else{
     db.user.findOrCreate({
       where:{
@@ -47,28 +42,30 @@ router.post('/signup',function(req,res){
       defaults:{
         username: req.body.username,
         password: req.body.password,
-        name: req.body.name,
+        // name: req.body.name,
+          // this was here... don't need, I don't think
         soul_tempo: -1
       }
     }).spread(function(user,created){
       if(created){
-        req.flash('success','You are signed up.')
+        req.session.user = user.id;
+        req.flash('success','New account created! You are logged in as: ' + req.body.username);
         res.redirect('/');
       }else{
         throw new Error('A user with that username already exists.');
         res.send('A user with that username already exists.');
         req.flash('danger','A user with that username already exists.');
-        res.redirect('/auth/signup');
+        res.redirect('/auth');
       }
     }).catch(function(err){
       if(err.message){
         req.flash('danger',err.message);
       }else{
-        req.flash('danger','unknown error.');
+        req.flash('danger','unknown error');
         console.log(err);
       }
-      res.redirect('/auth/signup');
-    })
+      res.redirect('/auth');
+    });
   }
 });
 
