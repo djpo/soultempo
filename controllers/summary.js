@@ -30,19 +30,11 @@ router.get('/', function(req, res) {
 		// order: 'updatedAt DESC'
 	}).then(function(favorites) {
 
-		console.log('---favorites---');
-		console.log(favorites);
-		console.log('---------------');
-
-		// if (favorites === []) {
-		// 	console.log("favorites is empty array");
-		// 	var st = -5;
-		// } else {
-
-			//console.log("favorites is not empty array");
+		console.log('---favorites.length: ' + favorites.length);
 
 
 			var st = calcSoulTempo(favorites);
+
 			db.user.update({
 				soul_tempo: st
 			}, {
@@ -50,11 +42,13 @@ router.get('/', function(req, res) {
 					id: req.session.user
 				}
 			}).then(function() {
-				console.log('hmmmmmmmmmmm');
+				console.log('updated user...');
 			});
 			
 		// }
 
+		console.log('st: ' + st);
+		console.log('typeof st: ' + typeof st);
 		res.render('summary', {collection: favorites, st: st});
 	});
 });

@@ -49,6 +49,10 @@ body {
 	background-color: black;
 }
 
+.songRow {
+	border-width: 1px;
+}
+
 .center {
 	float: none;
 	margin-left: auto;
@@ -65,6 +69,9 @@ body {
 	font-size: 50px;
 	font-weight: bold;
 	color: rgb(0, 255, 204);
+}
+#soulTempoBox.soulTempoBoxEmpty {
+	font-size: 20px;
 }
 
 .left-label {

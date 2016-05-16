@@ -3,14 +3,11 @@
 
 <% foundSongs.forEach(function(foundSong) { %>
 	<div class="row songRow">
-		<div class="col-xs-4">
+		<div class="col-xs-5">
 			<%= foundSong.artist %>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-7">
 			<%= foundSong.title %>
-		</div>
-		<div class="col-xs-4 songId">
-			<%= foundSong.id %>
 		</div>
 	</div>
 <% }); %>

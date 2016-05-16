@@ -2,8 +2,9 @@ project 2 to do
 ____________________
 in progress
 
-'my collection' showing "soul deprived" for all users
+'my collection' showing NaN if user has no favorites
 
+-
 ____________________
 next up
 
