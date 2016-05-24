@@ -3,13 +3,14 @@ var router = express.Router();
 var db = require('./../models');
 var session = require('express-session');
 
-var calcSoulTempo = function (songs) {
+function calcSoulTempo(songs) {
 	var tempoNumerator = 0;
 	songs.forEach(function (song) {
 		tempoNumerator += song.dataValues.tempo;
 	});
 	return Math.round(tempoNumerator / songs.length);
 };
+
 
 router.all('/', function (req, res, next) {
 	if (req.currentUser) {
@@ -24,16 +25,14 @@ router.get('/', function(req, res) {
 	console.log('_____summary.js GET route_____');
 
 	db.favorite.findAll({
-		where: {
-			u_id: req.session.user
-		},
+		where: {u_id: req.session.user}
 		// order: 'updatedAt DESC'
 	}).then(function(favorites) {
 
 		console.log('---favorites.length: ' + favorites.length);
 
 
-			var st = calcSoulTempo(favorites);
+			var st = calcSoulTempo(favorites) || -1;
 
 			db.user.update({
 				soul_tempo: st
