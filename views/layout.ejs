@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	
-	<script src="//code.jquery.com/jquery.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 
-	<title>Soul Tempo</title>
+  <title>Soul Tempo</title>
 </head>
 <body>
 
-	<header class="row" id="topbar">
-		<div class="col-xs-12" id="appTitle">
-			SOUL TEMPO
-		</div>
-	</header>
+  <header class="row" id="topbar">
+    <div class="col-xs-12" id="appTitle">
+      SOUL TEMPO
+    </div>
+  </header>
 
-	<div class="container">
-		<div>
-			<% include ./partials/alerts.ejs %>
-		</div>
-	</div>
+  <div class="container">
+    <div>
+      <% include ./partials/alerts.ejs %>
+    </div>
+  </div>
 
-	<div class="container row">
+  <div class="container row">
 
-		<div class="col-xs-2 border" id="sidebar">
-			<% include ./partials/sidebar.ejs %>
-		</div>
+    <div class="col-xs-2 border" id="sidebar">
+      <% include ./partials/sidebar.ejs %>
+    </div>
 
-		<div class="col-xs-10 border">
-			<%- body %>
-		</div>
+    <div class="col-xs-10 border">
+      <%- body %>
+    </div>
 
-	</div>
+  </div>
 
 </body>
 </html>

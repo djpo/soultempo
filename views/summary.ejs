@@ -1,47 +1,47 @@
 <% if (st === -1) { %>
 
-	<div class="row center">
-		<div id="soulTempoBox" class="soulTempoBoxEmpty">
-			soul deprived...
-		</div>
-	</div>
+  <div class="row center">
+    <div id="soulTempoBox" class="soulTempoBoxEmpty">
+      soul deprived...
+    </div>
+  </div>
 
 <% } else { %>
 
-	<h3>My Soul Tempo</h3>
+  <h3>My Soul Tempo</h3>
 
-	<div class="row center">
-		<div id="soulTempoBox">
-			<%= st %>
-		</div>
-	</div>
+  <div class="row center">
+    <div id="soulTempoBox">
+      <%= st %>
+    </div>
+  </div>
 
-	<h3>My collection</h3>
+  <h3>My collection</h3>
 
-	<div class="row labelRow">
-		<div class="col-xs-1">
-			tempo
-		</div>
-		<div class="col-xs-5">
-			artist
-		</div>
-		<div class="col-xs-6">
-			title
-		</div>
-	</div>
+  <div class="row labelRow">
+    <div class="col-xs-1">
+      tempo
+    </div>
+    <div class="col-xs-5">
+      artist
+    </div>
+    <div class="col-xs-6">
+      title
+    </div>
+  </div>
 
-	<% collection.forEach(function(entry) { %>
-		<div class="row songRow">
-			<div class="col-xs-1">
-				<%= Math.round(entry.dataValues.tempo); %>
-			</div>
-			<div class="col-xs-5">
-				<%= entry.dataValues.artist %>
-			</div>
-			<div class="col-xs-6">
-				<%= entry.dataValues.title %>
-			</div>	
-		</div>
-	<% }); %>
+  <% collection.forEach(function(entry) { %>
+    <div class="row songRow">
+      <div class="col-xs-1">
+        <%= Math.round(entry.dataValues.tempo); %>
+      </div>
+      <div class="col-xs-5">
+        <%= entry.dataValues.artist %>
+      </div>
+      <div class="col-xs-6">
+        <%= entry.dataValues.title %>
+      </div>  
+    </div>
+  <% }); %>
 
 <% } %>
