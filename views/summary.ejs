@@ -1,57 +1,47 @@
-<h3>My collection</h3>
+<% if (st === -1) { %>
 
-<% console.log('_____coming to you from summary.ejs_____'); %>
-
-<% console.log('-favorites[0]--'); %>
-<% console.log(st); %>
-<% console.log('---------------'); %>
-
-
-
-<% if (!(st.typeof === "integer")) { %>
-	<% console.log("if statement 1st path"); %>
-
-	<div class="row center">
-		<div id="soulTempoBox">
-			soul deprived...
-		</div>
-	</div>
+  <div class="row center">
+    <div id="soulTempoBox" class="soulTempoBoxEmpty">
+      soul deprived...
+    </div>
+  </div>
 
 <% } else { %>
-	<% console.log("if statement 2nd path"); %>
 
-	<div class="row center">
-		<div id="soulTempoBox">
-			<%= st %>
-		</div>
-	</div>
+  <h3>My Soul Tempo</h3>
 
+  <div class="row center">
+    <div id="soulTempoBox">
+      <%= st %>
+    </div>
+  </div>
 
-	<div class="row labelRow">
-		<div class="col-xs-5">
-			artist
-		</div>
-		<div class="col-xs-6">
-			title
-		</div>
-		<div class="col-xs-1">
-			tempo
-		</div>
-	</div>
+  <h3>My collection</h3>
 
-	<% collection.forEach(function(entry) { %>
-		<div class="row songRow">
-			<div class="col-xs-5">
-				<%= entry.dataValues.artist %>
-			</div>
-			<div class="col-xs-6">
-				<%= entry.dataValues.title %>
-			</div>	
-			<div class="col-xs-1">
-				<%= Math.round(entry.dataValues.tempo); %>
-			</div>
-		</div>
-	<% }); %>
+  <div class="row labelRow">
+    <div class="col-xs-1">
+      tempo
+    </div>
+    <div class="col-xs-5">
+      artist
+    </div>
+    <div class="col-xs-6">
+      title
+    </div>
+  </div>
+
+  <% collection.forEach(function(entry) { %>
+    <div class="row songRow">
+      <div class="col-xs-1">
+        <%= Math.round(entry.dataValues.tempo); %>
+      </div>
+      <div class="col-xs-5">
+        <%= entry.dataValues.artist %>
+      </div>
+      <div class="col-xs-6">
+        <%= entry.dataValues.title %>
+      </div>  
+    </div>
+  <% }); %>
 
 <% } %>
-

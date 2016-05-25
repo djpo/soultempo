@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({extended: true}));
-	// need extended: true in order to parse objects into AJAX call
+  // need extended: true in order to parse objects into AJAX call
 app.use(session({
   secret:'whraioadfgnioadlkjajkl',
   resave: false,
@@ -21,26 +21,26 @@ app.use(flash());
 
 
 app.use(function (req, res, next) {
-	if (req.session.user){
-		db.user.findById(req.session.user).then(function(user){
-			req.currentUser = user;
-			next();
-		});
-	} else {
-		req.currentUser = false;
-		next();
-	}
+  if (req.session.user){
+    db.user.findById(req.session.user).then(function(user){
+      req.currentUser = user;
+      next();
+    });
+  } else {
+    req.currentUser = false;
+    next();
+  }
 });
 app.use(function (req, res, next) {
-	res.locals.currentUser = req.currentUser;
-	res.locals.alerts = req.flash();
-	next();
+  res.locals.currentUser = req.currentUser;
+  res.locals.alerts = req.flash();
+  next();
 });
 
 
 ///// routes
 app.get('/', function(req, res) {
-	res.render('index');
+  res.render('index');
 });
 app.get('/add',function(req, res) {
   if (req.currentUser) {
