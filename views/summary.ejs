@@ -1,22 +1,50 @@
-<% if (st === -1) { %>
+<!-- <div class="container"> -->
+  <div id="summaryTopRow" class="row">
 
-  <div class="row center">
-    <div id="soulTempoBox" class="soulTempoBoxEmpty">
-      soul deprived...
+    <div class="col col-xs-4">
+      <h3 style="text-align: right;">
+        my<br>
+        <span style="font-style: italic;">soul<br>
+        tempo</span>
+      </h3>
     </div>
+
+    <div class="col col-xs-4">
+
+      <% if (st === -1) { %>
+        <div class="row center">
+          <div id="soulTempoBox" class="soulTempoBoxEmpty">
+            soul deprived...
+          </div>
+        </div>
+    <!-- col -->
+    </div>
+  <!-- top row -->
   </div>
 
-<% } else { %>
+      <% } else { %>
+        <div id="soulTempoBox">
+          <%= st %>
+        </div>
 
-  <h3>My Soul Tempo</h3>
-
-  <div class="row center">
-    <div id="soulTempoBox">
-      <%= st %>
+        <!-- change soulTempoBox color with D3 -->
+        <script>
+          var stColor = "hsl(" + ((<%= st %>/180)*360+160);
+          d3.selectAll("#soulTempoBox")
+            .style("background-color", function() {
+              return stColor + ",70%,50%)";
+            })
+            .style("border-color", function() {
+              return stColor + ",100%,50%)";
+            });
+        </script>
+      <!-- col-->
+      </div>
+    <!-- top row -->
     </div>
-  </div>
 
-  <h3>My collection</h3>
+  <hr>
+  <h4>my song collection</h4>
 
   <div class="row labelRow">
     <div class="col-xs-1">
@@ -45,3 +73,5 @@
   <% }); %>
 
 <% } %>
+
+<!-- </div> -->
