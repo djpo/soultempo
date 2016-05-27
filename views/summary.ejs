@@ -1,47 +1,36 @@
-<!-- <div class="container"> -->
-  <div id="summaryTopRow" class="row">
+<div id="summaryTopRow" class="row">
 
-    <div class="col col-xs-4">
-      <h3 style="text-align: right;">
-        my<br>
-        <span style="font-style: italic;">soul<br>
-        tempo</span>
-      </h3>
-    </div>
-
-    <div class="col col-xs-4">
-
-      <% if (st === -1) { %>
-        <div class="row center">
-          <div id="soulTempoBox" class="soulTempoBoxEmpty">
-            soul deprived...
-          </div>
-        </div>
-    <!-- col -->
-    </div>
-  <!-- top row -->
+  <div class="col col-xs-4">
+    <h3 style="text-align: right;">
+      my<br>
+      <span style="font-style: italic;">soul<br>
+      tempo</span>
+    </h3>
   </div>
 
-      <% } else { %>
-        <div id="soulTempoBox">
-          <%= st %>
-        </div>
+  <div class="col col-xs-4">
 
-        <!-- change soulTempoBox color with D3 -->
-        <script>
-          var stColor = "hsl(" + ((<%= st %>/180)*360+160);
-          d3.selectAll("#soulTempoBox")
-            .style("background-color", function() {
-              return stColor + ",70%,50%)";
-            })
-            .style("border-color", function() {
-              return stColor + ",100%,50%)";
-            });
-        </script>
-      <!-- col-->
+<% if (st === -1) { %>
+
+    <div class="row center">
+      <div id="soulTempoBox" class="soulTempoBoxEmpty">
+        soul deprived...
       </div>
-    <!-- top row -->
     </div>
+  <!-- end col -->
+  </div>
+<!-- end top row -->
+</div>
+
+<% } else { %>
+
+    <div id="soulTempoBox">
+      <%= st %>
+    </div>
+  <!-- end col-->
+  </div>
+<!-- end top row -->
+</div>
 
   <hr>
   <h4>my song collection</h4>
@@ -58,20 +47,40 @@
     </div>
   </div>
 
-  <% collection.forEach(function(entry) { %>
-    <div class="row songRow">
-      <div class="col-xs-1">
-        <%= Math.round(entry.dataValues.tempo); %>
-      </div>
-      <div class="col-xs-5">
-        <%= entry.dataValues.artist %>
-      </div>
-      <div class="col-xs-6">
-        <%= entry.dataValues.title %>
-      </div>  
+<% collection.forEach(function(entry) { %>
+  <div class="row songRow">
+    <div class="col-xs-1">
+      <%= Math.round(entry.dataValues.tempo); %>
     </div>
-  <% }); %>
+    <div class="col-xs-5">
+      <%= entry.dataValues.artist %>
+    </div>
+    <div class="col-xs-6">
+      <%= entry.dataValues.title %>
+    </div>  
+  </div>
+<% }); %>
 
+<!-- end if/else -->
 <% } %>
 
-<!-- </div> -->
+
+<script>
+  function tempoToColor(tempo, opacity) {
+    return "hsl(" + ((tempo/180)*360+160) + "," + opacity + "%,50%)";
+  }
+
+  // change soulTempoBox color with D3
+  d3.selectAll("#soulTempoBox")
+    .style("background-color", tempoToColor(<%= st %>, 70))
+    .style("border-color", tempoToColor(<%= st %>, 100));
+
+  // change song color with D3
+  var dataset = [1, 5, 66, 150, 140, 122, 121, 115, 120, 133, 155, 169, 99, 58];
+  d3.selectAll(".songRow")
+    .data(dataset)
+    .style("background-color", function(d) {
+      console.log(d);
+      return tempoToColor(d, 70);
+    });
+</script>
