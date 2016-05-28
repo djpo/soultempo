@@ -1,5 +1,4 @@
 <div id="summaryTopRow" class="row">
-
   <div class="col col-xs-4">
     <h3 style="text-align: right;">
       my<br>
@@ -7,7 +6,6 @@
       tempo</span>
     </h3>
   </div>
-
   <div class="col col-xs-4">
 
 <% if (st === -1) { %>
@@ -32,25 +30,24 @@
 <!-- end top row -->
 </div>
 
-  <hr>
-  <h4>my song collection</h4>
-
-  <div class="row labelRow">
-    <div class="col-xs-1">
-      tempo
-    </div>
-    <div class="col-xs-5">
-      artist
-    </div>
-    <div class="col-xs-6">
-      title
-    </div>
+<hr>
+<h4>my song collection</h4>
+<div class="row labelRow">
+  <div class="col-xs-1">
+    tempo
   </div>
+  <div class="col-xs-5">
+    artist
+  </div>
+  <div class="col-xs-6">
+    title
+  </div>
+</div>
 
 <% collection.forEach(function(entry) { %>
-  <div class="row songRow">
-    <div class="col-xs-1">
-      <%= Math.round(entry.dataValues.tempo); %>
+  <div class="row song-row">
+    <div class="col-xs-1 song-tempo">
+      <%= Math.round(entry.dataValues.tempo) %>
     </div>
     <div class="col-xs-5">
       <%= entry.dataValues.artist %>
@@ -64,23 +61,24 @@
 <!-- end if/else -->
 <% } %>
 
-
 <script>
   function tempoToColor(tempo, opacity) {
     return "hsl(" + ((tempo/180)*360+160) + "," + opacity + "%,50%)";
   }
+  var st = <%= st %>;
+  var songTempos = $(".song-tempo").map(function() {
+                      return Number($.trim($(this).text()));
+                    }).get();
 
   // change soulTempoBox color with D3
   d3.selectAll("#soulTempoBox")
-    .style("background-color", tempoToColor(<%= st %>, 70))
-    .style("border-color", tempoToColor(<%= st %>, 100));
+    .style("background-color", tempoToColor(st, 70))
+    .style("border-color", tempoToColor(st, 100));
 
   // change song color with D3
-  var dataset = [1, 5, 66, 150, 140, 122, 121, 115, 120, 133, 155, 169, 99, 58];
-  d3.selectAll(".songRow")
-    .data(dataset)
+  d3.selectAll(".song-row")
+    .data(songTempos)
     .style("background-color", function(d) {
-      console.log(d);
-      return tempoToColor(d, 70);
+      return tempoToColor(d, 60);
     });
 </script>

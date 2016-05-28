@@ -22,18 +22,11 @@ router.all('/', function (req, res, next) {
 });
 
 router.get('/', function(req, res) {
-  console.log('_____summary.js GET route_____');
-
   db.favorite.findAll({
     where: {u_id: req.session.user}
     // order: 'updatedAt DESC'
   }).then(function(favorites) {
-
-    console.log('---favorites.length: ' + favorites.length);
-
-
       var st = calcSoulTempo(favorites) || -1;
-
       db.user.update({
         soul_tempo: st
       }, {
@@ -41,13 +34,9 @@ router.get('/', function(req, res) {
           id: req.session.user
         }
       }).then(function() {
-        console.log('updated user...');
+        // console.log('_____updated user');
       });
-      
-    // }
 
-    console.log('st: ' + st);
-    console.log('typeof st: ' + typeof st);
     res.render('summary', {collection: favorites, st: st});
   });
 });
