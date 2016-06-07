@@ -12,20 +12,18 @@ router.get('/',function(req,res){
 //POST /auth/login
 //process login data and login user
 router.post('/login',function(req,res){
-
   db.user.authenticate(req.body.username,req.body.password,function(err,user){
     if(err){
       res.send(err);
     }else if(user){
       req.session.user = user.id;
       req.flash('success','You are logged in.');
-      res.redirect('/');
+      res.redirect('/summary');
     }else{
       req.flash('danger','Invalid username or password.');
       res.redirect('/auth');
     }
   });
-
 });
 
 //POST /auth/signup
