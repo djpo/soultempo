@@ -60,10 +60,10 @@ router.post('/', function(req, res) {
         console.log("added '" + song.title + "' to favorites table");
       });
     });
-    console.log('_______(async end)________');
+    // console.log('_______(async end)________');
   });
 //////////
-  console.log('_______right before res.status(200)________');
+  // console.log('_______right before res.status(200)________');
   res.status(200).send('TestStuff');
 });
 

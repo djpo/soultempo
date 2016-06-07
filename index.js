@@ -22,7 +22,8 @@ app.use(flash());
 
 app.use(function (req, res, next) {
   if (req.session.user){
-    db.user.findById(req.session.user).then(function(user){
+    db.user.findById(req.session.user)
+    .then(function(user) {
       req.currentUser = user;
       next();
     });
@@ -53,7 +54,7 @@ app.get('/add',function(req, res) {
 app.use('/auth', require('./controllers/auth.js'));
 app.use('/results', require('./controllers/results'));
 app.use('/process', require('./controllers/process'));
-app.use('/summary', require('./controllers/summary'));
+app.use('/collection', require('./controllers/collection'));
 
 
 ///// listen for connections

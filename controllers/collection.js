@@ -5,16 +5,24 @@ var session = require('express-session');
 
 function calcSoulTempo(songs) {
   var tempoNumerator = 0;
-  songs.forEach(function (song) {
+  songs.forEach(function(song) {
     tempoNumerator += song.dataValues.tempo;
   });
   return Math.round(tempoNumerator / songs.length);
 };
 
 
-router.all('/', function (req, res, next) {
-  if (req.currentUser) {
-    next();
+router.all('/', function(req, res, next) {
+
+  // if (req.currentUser) {
+  if (req.session.user) {
+    db.user.findById(req.session.user)
+    .then(function(user) {
+      if (user.soul_tempo == -1) {
+        req.flash('info', 'Your collection is empty! Find some songs, add them, then check out your collection.');
+        res.redirect('/add');
+      } else { next(); }
+    });
   } else {
     req.flash('danger','You must log in before viewing your collection.');
     res.redirect('/');
@@ -37,7 +45,7 @@ router.get('/', function(req, res) {
         // console.log('_____updated user');
       });
 
-    res.render('summary', {collection: favorites, st: st});
+    res.render('collection', {collection: favorites, st: st});
   });
 });
 

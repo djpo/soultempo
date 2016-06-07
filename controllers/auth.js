@@ -5,8 +5,7 @@ var router = express.Router();
 //GET /auth
 //display login/signup form
 router.get('/',function(req,res){
-    // replaced res.render('auth/login');
-    res.render('login_signup');
+  res.render('login_signup');
 });
 
 //POST /auth/login
@@ -18,7 +17,7 @@ router.post('/login',function(req,res){
     }else if(user){
       req.session.user = user.id;
       req.flash('success','You are logged in.');
-      res.redirect('/summary');
+      res.redirect('/collection');
     }else{
       req.flash('danger','Invalid username or password.');
       res.redirect('/auth');
@@ -40,15 +39,13 @@ router.post('/signup',function(req,res){
       defaults:{
         username: req.body.username,
         password: req.body.password,
-        // name: req.body.name,
-          // this was here... don't need, I don't think
         soul_tempo: -1
       }
     }).spread(function(user,created){
       if(created){
         req.session.user = user.id;
-        req.flash('success','New account created! You are logged in as: ' + req.body.username);
-        res.redirect('/');
+        req.flash('success','New account created! You are logged in as: ' + req.body.username + '. Start by finding some songs you like.');
+        res.redirect('/add');
       }else{
         throw new Error('A user with that username already exists.');
         res.send('A user with that username already exists.');
