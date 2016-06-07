@@ -44,7 +44,7 @@ router.post('/signup',function(req,res){
     }).spread(function(user,created){
       if(created){
         req.session.user = user.id;
-        req.flash('success','New account created! You are logged in as: ' + req.body.username + '. Start by finding some songs you like.');
+        req.flash('success','New account created! You are logged in as ' + req.body.username + '. Start by finding some songs you like.');
         res.redirect('/add');
       }else{
         throw new Error('A user with that username already exists.');
