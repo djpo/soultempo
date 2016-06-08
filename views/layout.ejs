@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  
-  <script src="//code.jquery.com/jquery.js"></script>
+  <head>
+    <title>Soul Tempo</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> -->
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+      <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!--<![endif]-->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!-- use below for offline development -->
+    <!--
+    <link rel="stylesheet" href="offline_dev/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="offline_dev/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="offline_dev/bootstrap.min.js"></script>
+    <script type="text/javascript" src="offline_dev/d3.min.js"></script>
+    -->
 
-  <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
 
-  <title>Soul Tempo</title>
-</head>
-<body>
+    <header class="row" id="topbar">
+      <div class="col-xs-12" id="appTitle">
+        SOUL TEMPO
+      </div>
+    </header>
 
-  <header class="row" id="topbar">
-    <div class="col-xs-12" id="appTitle">
-      SOUL TEMPO
-    </div>
-  </header>
-
-  <div class="container">
-    <div>
-      <% include ./partials/alerts.ejs %>
-    </div>
-  </div>
-
-  <div class="container row">
-
-    <div class="col-xs-2 border" id="sidebar">
-      <% include ./partials/sidebar.ejs %>
-    </div>
-
-    <div class="col-xs-10 border">
-      <%- body %>
+    <div class="container">
+      <div>
+        <% include ./partials/alerts.ejs %>
+      </div>
     </div>
 
-  </div>
+    <div class="container row">
+      <div class="col-xs-2 border" id="sidebar">
+        <% include ./partials/sidebar.ejs %>
+      </div>
+      <div class="col-xs-10 border">
+        <%- body %>
+      </div>
+    </div>
 
-</body>
+  </body>
 </html>
