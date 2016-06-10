@@ -1,9 +1,11 @@
 ## Soul Tempo
 
-deployed here: http://soultempo.herokuapp.com/
+live: http://soultempo.herokuapp.com/
 
-This is my second project for General Assembly's Web Development Intensive course (Seattle cohort #05). It is my first full-stack web app with a functional server.
+Soul Tempo is a full-stack web app that stores a collection of your favorite songs, and provides some cool insight into the trends of your music taste.
 
-I primarily used Node and Express for this app. It uses the Echo Nest API to access song audio information.
+Tech: Node.js, Express, PostgreSQL, Spotify API
 
-The site is operational, but I will be making many improvements in the near future.
+This project was created during General Assembly's Web Development Immersive program. It is currently in development to become more engaging for the user, and to integrate with Spotify's user library capabilities. Please share any feedback!
+
+Developed by [Derek Poppe](http://derekpoppe.com)
