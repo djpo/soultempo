@@ -48,7 +48,6 @@ router.post('/', function(req, res) {
     });
   };
 
-
   async.concat(links, getData, function(err, foundSongs) {
     res.render('results', {foundSongs: foundSongs});
   });

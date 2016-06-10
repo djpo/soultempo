@@ -6,15 +6,12 @@ var router = express.Router();
 
 
 router.post('/', function(req, res) {
-  console.log('_____process.js POST route_____');
   var procIdArray = req.body.idsToPass;
-
-//////////
   var links = [];
   procIdArray.forEach(function(songId) {
     links.push('http://developer.echonest.com/api/v4/song/profile?api_key=' + process.env.EN_API_KEY + '&id=' + songId + '&bucket=audio_summary');
   });
-  console.log(links);
+  // console.log(links);
 
   var getData = function(url, cb){
     request(url, function(err, response, body) {
@@ -60,10 +57,8 @@ router.post('/', function(req, res) {
         console.log("added '" + song.title + "' to favorites table");
       });
     });
-    // console.log('_______(async end)________');
   });
-//////////
-  // console.log('_______right before res.status(200)________');
+
   res.status(200).send('TestStuff');
 });
 
