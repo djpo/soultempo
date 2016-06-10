@@ -1,6 +1,6 @@
 ## Soul Tempo
 
-live: http://soultempo.herokuapp.com/
+[Live site](http://soultempo.herokuapp.com)
 
 Soul Tempo is a full-stack web app that stores a collection of your favorite songs, and provides some cool insight into the trends of your music taste.
 

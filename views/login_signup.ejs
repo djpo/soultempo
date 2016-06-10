@@ -1,29 +1,31 @@
 <div class="row">
 
-  <div class="col-xs-6">
-    <h1>Log in</h1>
-    <hr>
-    <form class="form" method="POST" action="/auth/login">
-      <input type="text" class="form-control" placeholder="Enter your username" name="username">
-      <br><br>
-      <input type="password" class="form-control" placeholder="Choose a password" name="password">
-      <br><br>
-      <input type="submit" value="log me in" class="btn btn-primary">
-    </form>
+  <div class="col-xs-5">
+    <h3>Log in</h3>
+    <div class="border">
+      <form class="form" method="POST" action="/auth/login">
+        <input type="text" class="form-control" placeholder="username" name="username">
+        <br><br>
+        <input type="password" class="form-control" placeholder="password" name="password">
+        <br><br>
+        <input type="submit" value="log me in" class="btn btn-primary">
+      </form>
+    </div>
   </div>
 
-  <div class="col-xs-6">
-    <h1>Sign up</h1>
-    <hr>
-    <form class="form" method="post" action="/auth/signup">
-      <input type="text" class="form-control" placeholder="Choose a username" name="username">
-      <br><br>
-      <input type="password" class="form-control" placeholder="Choose a password" name="password">
-      <br><br>
-      <input type="password" class="form-control" placeholder="Re-type your password" name="password2">
-      <br><br>
-      <input type="submit" value="sign up" class="btn btn-primary">
-    </form>
+  <div class="col-xs-6 col-xs-offset-1">
+    <h3>Sign up</h3>
+    <div class="border">
+      <form class="form" method="post" action="/auth/signup">
+        <input type="text" class="form-control" placeholder="choose username" name="username">
+        <br><br>
+        <input type="password" class="form-control" placeholder="choose password" name="password">
+        <br><br>
+        <input type="password" class="form-control" placeholder="re-type password" name="password2">
+        <br><br>
+        <input type="submit" value="sign up" class="btn btn-primary">
+      </form>
+    </div>
   </div>
 
 </div>

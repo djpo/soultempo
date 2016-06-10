@@ -26,26 +26,35 @@
   </head>
   <body>
 
+
+
     <header class="row" id="topbar">
       <div class="col-xs-12" id="appTitle">
         SOUL TEMPO
       </div>
     </header>
 
+
+
+
+<!--     <header class="row" id="topbar">
+      <div class="col-xs-12" id="appTitle">
+        SOUL TEMPO
+      </div>
+    </header> -->
+
     <div class="container">
       <div>
         <% include ./partials/alerts.ejs %>
       </div>
     </div>
-
     <div class="container row">
-      <div class="col-xs-2 border" id="sidebar">
+      <div class="col-xs-2" id="sidebar">
         <% include ./partials/sidebar.ejs %>
       </div>
-      <div class="col-xs-10 border">
+      <div class="col-xs-10 border-invert">
         <%- body %>
       </div>
     </div>
-
   </body>
 </html>

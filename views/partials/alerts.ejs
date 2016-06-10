@@ -1,7 +1,15 @@
 <% if(typeof alerts !== 'undefined'){ %>
+
   <% for(key in alerts){ %>
     <% alerts[key].forEach(function(thisMsg){ %>
       <div class="alert alert-<%= key %>"><%= thisMsg %></div>
     <% }); %>
   <% } %>
+
+  <script>
+    $('.alert').on('click', function(){
+      $(this).remove();
+    });
+  </script>
+
 <% } %>

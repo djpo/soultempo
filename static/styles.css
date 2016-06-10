@@ -1,29 +1,64 @@
-/* colors
+/*---------- color palette */
+/*
   rgba(0, 230, 172, 1)
   rgba(0, 153, 204, 1)
   rgba(255, 80, 80, 1)
 */
 
-
+/*---------- global */
 * {
   font-family: helvetica;
   color: white;
 }
 body {
-  background-color: rgb(128, 128, 128);
-  /* max-width: 500px; */
+  background-color: rgba(100, 100, 100, 1);
+}
+a {
+  color: rgba(255, 80, 80, 1);
+}
+.div {
+  /*box-sizing: border-box;*/
+}
+.center {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+.border {
+  border-top: 1px solid rgba(0, 230, 172, 1);
+  border-left: 4px solid rgba(0, 230, 172, 1);
+  padding: 10px;
+}
+.border-invert {
+  border-right: 8px solid rgba(0, 153, 204, 1);
+  border-bottom: 3px solid rgba(0, 153, 204, 1);
+  padding: 10px;
 }
 
+/*---------- buttons */
+button {
+  margin: 5px;
+}
 .btn {
-  background-color: rgb(64, 64, 64);
+  background-color: rgba(64, 64, 64, 1);
+  border: 1px solid white;
+}
+.btn:hover {
+  background-color: rgba(255, 80, 80, 1);
   border: 1px solid white;
 }
 
-.border {
-  border: 1px solid rgba(255, 255, 255, .3);
-  /*box-shadow: 0px 0px 15px 3px rgba(200, 200, 200, .2);*/
+/*---------- alerts */
+.alert {
+  position: absolute;
+  z-index: 1;
+  right: 40%;
+  max-height: 10px;
+  line-height: 0px;
+  background-color: rgba(255, 255, 255, .7);
 }
 
+/*---------- topbar */
 #topbar {
   height: 50px;
   width: 100%;
@@ -41,31 +76,40 @@ body {
   color: yellow;
 }
 
+/*---------- sidebar */
 #sidebar {
   width: 120px;
 }
-
-.labelRow {
-  background-color: black;
-}
-
-.songRow {
-  border-width: 1px;
-}
-
-.center {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#soulTempoBox {
-  height: 150px;
-  width: 150px;
+.left-label {
+  background-color: rgba(255, 255, 255, .3);
   text-align: center;
-  line-height: 135px;
+  font-size: 12px;
+}
+#current-user {
+  background-color: rgba(0, 153, 204, .3);
+  border: 2px solid rgba(0, 153, 204, 1);
+}
+#username {
+  color: yellow;
+}
+
+/*---------- add */
+.search-box {
+  color: black;
+}
+
+/*---------- collection */
+#collection-top-row {
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+#soul-tempo-box {
+  height: 60px;
+  width: 90px;
+  text-align: center;
+  line-height: 50px;
   padding: auto;
-  font-size: 70px;
+  font-size: 40px;
   font-weight: bold;
   border: 5px solid rgb(255, 80, 80);
   background-color: rgba(255, 80, 80, .5);
@@ -73,21 +117,16 @@ body {
     -2px 0px black, 2px 0px black,
     -2px 2px black, 0px 2px black, 2px 2px black;
 }
-#soulTempoBox.soulTempoBoxEmpty {
-  font-size: 20px;
+#soul-tempo-box-label {
+  text-align: right;
 }
-
-.left-label {
-  background-color: rgba(255, 255, 255, .3);
-  text-align: center;
-  font-size: 12px;
+.label-row {
+  background-color: rgba(64, 64, 64, 1);
+  border: 1px solid rgba(64, 64, 64, 1);
+  margin: 0px;
 }
-
-#current-user {
-  background-color: rgba(0, 153, 204, .3);
-  border: 2px solid rgba(0, 153, 204, 1);
-}
-
-#username {
-  color: yellow;
+.song-row {
+  border: 1px solid rgba(64, 64, 64, 1);
+  border-top: 0px;
+  margin: 0px;
 }

@@ -1,65 +1,35 @@
-<div id="collectionTopRow" class="row">
-  <div class="col col-xs-4">
-    <h3 style="text-align: right;">
-      my<br>
-      <span style="font-style: italic;">soul<br>
-      tempo</span>
-    </h3>
+<div id="collection-top-row" class="row">
+  <div class="col-xs-7">
+    <h3>Song collection</h3>
   </div>
-  <div class="col col-xs-4">
-
-<% if (st === -1) { %>
-
-    <div class="row center">
-      <div id="soulTempoBox" class="soulTempoBoxEmpty">
-        soul deprived...
-      </div>
+  <div class="col-xs-3">
+    <div id="soul-tempo-box-label">
+      Soul Tempo
+      <br><span style="font-size: 10px;">(in beats per minute)</span>
     </div>
-  <!-- end col -->
   </div>
-<!-- end top row -->
-</div>
-
-<% } else { %>
-
-    <div id="soulTempoBox">
-      <%= st %>
-    </div>
-  <!-- end col-->
-  </div>
-<!-- end top row -->
-</div>
-
-<hr>
-<h4>my song collection</h4>
-<div class="row labelRow">
-  <div class="col-xs-1">
-    tempo
-  </div>
-  <div class="col-xs-5">
-    artist
-  </div>
-  <div class="col-xs-6">
-    title
+  <div class="col-xs-2">
+    <div id="soul-tempo-box"><%= st %></div>
   </div>
 </div>
 
+<div id="collection-bottom-row" class="border">
+  <div class="row label-row">
+    <div class="col-xs-1">tempo</div>
+    <div class="col-xs-5">artist</div>
+    <div class="col-xs-6">title</div>
+  </div>
+  
 <% collection.forEach(function(entry) { %>
   <div class="row song-row">
-    <div class="col-xs-1 song-tempo">
-      <%= Math.round(entry.dataValues.tempo) %>
-    </div>
-    <div class="col-xs-5">
-      <%= entry.dataValues.artist %>
-    </div>
-    <div class="col-xs-6">
-      <%= entry.dataValues.title %>
-    </div>  
+    <div class="col-xs-1 song-tempo"><%= Math.round(entry.dataValues.tempo) %></div>
+    <div class="col-xs-5"><%= entry.dataValues.artist %></div>
+    <div class="col-xs-6"><%= entry.dataValues.title %></div>
   </div>
 <% }); %>
 
-<!-- end if/else -->
-<% } %>
+</div>
+
 
 <script>
   function tempoToColor(tempo, opacity) {
@@ -70,8 +40,8 @@
                       return Number($.trim($(this).text()));
                     }).get();
 
-  // change soulTempoBox color with D3
-  d3.selectAll("#soulTempoBox")
+  // change soul tempo box color with D3
+  d3.selectAll("#soul-tempo-box")
     .style("background-color", tempoToColor(st, 70))
     .style("border-color", tempoToColor(st, 100));
 

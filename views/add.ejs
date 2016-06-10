@@ -1,21 +1,23 @@
-<h3>Search for some songs!</h3>
+<h3>Search for songs</h3>
 
-<form action="/results" method="POST" role="form">
+<div class="border">
 
-<% for (var i = 0; i < 3; i++) { %>
+  <form action="/results" method="POST" role="form">
 
-  <div class="row">
-    <div class="form-group col-xs-5">
-      <label for="">Artist</label>
-      <input type="text" class="form-control" id="artist<%= i %>" placeholder="artist" name="artist_<%= i %>">
+  <% for (var i = 0; i < 3; i++) { %>
+
+    <div class="row">
+      <div class="form-group col-xs-5 search-box">
+        <input class="border border-invert" type="text" class="form-control" id="artist<%= i %>" placeholder="artist" name="artist_<%= i %>">
+      </div>
+      <div class="form-group col-xs-5 search-box">
+        <input class="border border-invert" type="text" class="form-control" id="title<%= i %>" placeholder="title" name="title_<%= i %>">
+      </div>
     </div>
-    <div class="form-group col-xs-5">
-      <label for="">Title</label>
-      <input type="text" class="form-control" id="title<%= i %>" placeholder="title" name="title_<%= i %>">
-    </div>
-  </div>
 
-<% } %>
+  <% } %>
 
-  <button type="submit" class="btn btn-primary">Search</button>
-</form>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+</div>
