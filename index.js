@@ -52,7 +52,7 @@ app.get('/add',function(req, res) {
   }
 });
 app.use('/auth', require('./controllers/auth.js'));
-app.use('/results', require('./controllers/results'));
+app.use('/search', require('./controllers/search'));
 app.use('/process', require('./controllers/process'));
 app.use('/collection', require('./controllers/collection'));
 
