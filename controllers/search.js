@@ -5,65 +5,70 @@ var request = require('request');
 
 
 router.post('/', function(req, res) {
-  var links = [];
+  console.log('******************************');
+  console.log('******************************');
 
-  // var echoNestUrlBeg = 'http://developer.echonest.com/api/v4/song/search?api_key=';
-  // if (!req.body.artist_0 && !req.body.title_0) {
-  //   console.log('1st search has no artist nor title');
-  // } else {
-  //   links.push(echoNestUrlBeg + process.env.EN_API_KEY + '&artist=' + req.body.artist_0 + '&title=' + req.body.title_0);
-  // }
+  var searchUrls = [];
+  var urlBeg = 'https://api.spotify.com/v1/search?q=';
+  var urlEnd = '&type=track&limit=5';
 
-  var spotifyApiUrlBeg = 'https://api.spotify.com/v1/search?q=';
+  console.log('*************** input logic');
   if (!req.body.artist_0 && !req.body.title_0) {
-    console.log('1st track search field has no artist nor title');
+    console.log('1st track: empty - not searching');
+  } else if (!req.body.artist_0) {
+    console.log('1st track: searching by track title only');
+    searchUrls.push(urlBeg + 'track:' + req.body.title_0 + urlEnd);
+  } else if (!req.body.title_0) {
+    console.log('1st track: searching by track artist only');
+    searchUrls.push(urlBeg + 'artist:' + req.body.artist_0 + urlEnd);
   } else {
-    links.push(spotifyApiUrlBeg + req.body.title_0 + '&limit=1&type=track');
-  }
-  if (!req.body.artist_1 && !req.body.title_1) {
-    console.log('2nd track search has no artist nor title');
-  } else {
-    links.push(spotifyApiUrlBeg + req.body.title_1 + '&limit=1&type=track');
-  }
-  if (!req.body.artist_2 && !req.body.title_2) {
-    console.log('3rd track search field empty');
-  } else {
-    links.push(spotifyApiUrlBeg + req.body.title_2 + '&limit=1&type=track');
+    console.log('1st track: searching by track title and artist');
+    searchUrls.push(urlBeg + 'artist:' + req.body.artist_0 + '&20track:' + req.body.title_0 + urlEnd);
   }
 
-  console.log('***************1');
-  console.log(links);
+  console.log('*************** searchUrls');
+  console.log(searchUrls);
 
 //////////////////// API REQUEST
+  // call getData once for each track search
   var getData = function(url, cb) {
-    console.log('Spotify Web API search initiated...');
-    request(url, function(err, response, body) {
-      var fullResponseBody = JSON.parse(body);
-      console.log('***************2');
-      console.log(fullResponseBody);
+    // console.log('Spotify Web API search initiated...');
+    request(url, function(err, res, body) {
+      var resBody = JSON.parse(body);
+      // console.log('*************** # of results: ' + resBody.tracks.total);
+      console.log('*************** returned tracks');
 
-      // // if response contains ≥ 1 song, add to foundSongs
-      if (!err && response.statusCode == 200 && fullResponseBody.tracks.total > 0) {
-        var returnedSong = fullResponseBody.tracks.items[0];
-        var foundSong = {
-          artist: returnedSong.artists[0].name,
-          title: returnedSong.name,
-          id: returnedSong.id
-        };
+      if (!err && res.statusCode == 200 && resBody.tracks.total > 0) {
+        var foundSongOptions = [];
 
-        console.log('***************3');
-        console.log(foundSong);
+        // for each of Spotify's results (for this 1 track search)
+        for (i=0; i<resBody.tracks.items.length; i++) {
+          var returnedSong = resBody.tracks.items[i];
+          var trackArtists = returnedSong.artists.map(function(value){ return value.name; });
+          var foundSong = {
+            artists: trackArtists,
+            title: returnedSong.name
+            // , id: returnedSong.id
+          };
+          console.log('***** [' + i + ']');
+          console.log(foundSong);
+          foundSongOptions.push(foundSong);
+        }
 
       } else if (err) { console.log(err);
-      } else if (response.statusCode !== 200) { console.log('statusCode: ' + response.statusCode);
-      } else if (fullResponseBody.tracks.total <= 0) { console.log('no songs found by those search terms');
+      } else if (res.statusCode !== 200) { console.log('statusCode: ' + res.statusCode);
+      } else if (resBody.tracks.total <= 0) { console.log('no songs found by those search terms');
       }
       // return foundSong, for use in async.concat cb below
-      cb(null, foundSong);
+      cb(null, foundSongOptions);
     });
   };
 
-  async.concat(links, getData, function(err, foundSongs) {
+  async.concat(searchUrls, getData, function(err, foundSongs) {
+    console.log('*************** async.concat...');
+    console.log(foundSongs.length);
+    console.log(foundSongs);
+
     res.render('results', {foundSongs: foundSongs});
   });
 //////////////////// API REQUEST DONE
